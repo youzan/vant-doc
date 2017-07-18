@@ -1,6 +1,6 @@
 {
   "name": "zan-doc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "youzan document template",
   "main": "./src/index.js",
   "scripts": {
@@ -25,7 +25,7 @@
     "vue": "^2.4.1"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
+    "cheerio": "0.22.0",
     "decamelize": "^1.2.0",
     "markdown-it": "^8.3.1",
     "markdown-it-container": "^2.0.0",
