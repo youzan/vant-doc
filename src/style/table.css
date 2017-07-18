@@ -7,6 +7,7 @@
   background-color: #fff;
   border-collapse: collapse;
   color: $zan-doc-text-color;
+  font-family: Source Code Pro,Monaco,Inconsolata,monospace;
 
   th {
     padding: 10px;
