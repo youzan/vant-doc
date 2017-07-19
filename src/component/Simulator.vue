@@ -1,7 +1,7 @@
 <template>
   <div :class="['zan-doc-simulator', { 'zan-doc-simulator-fixed': isFixed }]">
     <div class="zan-doc-simulator__nav">
-      <div class="zan-doc-simulator__url">www.youzanyun.com/zanui</div>
+      <div class="zan-doc-simulator__url">{{ iframeHostName }}</div>
       <div class="zan-doc-simulator__reload" @click="reloadIframe"></div>
     </div>
     <iframe ref="iframe" :src="src" frameborder="0" />
@@ -18,7 +18,8 @@ export default {
 
   data() {
     return {
-      scrollTop: window.scrollY
+      scrollTop: window.scrollY,
+      iframeHostName: ''
     };
   },
 
@@ -26,6 +27,15 @@ export default {
     window.addEventListener('scroll', () => {
       this.scrollTop = window.scrollY;
     });
+  },
+
+  watch:{
+    src() {
+      const { iframe } = this.$refs;
+      if (iframe && iframe.contentWindow) {
+        this.iframeHostName = iframe.contentWindow.location.host;
+      }
+    }
   },
 
   computed: {
