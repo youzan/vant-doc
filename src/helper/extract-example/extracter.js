@@ -60,7 +60,6 @@ parser.use(markdownItContainer, 'demo', {
 
 module.exports = function extracter(config) {
   const { src, dist, nav } = config;
-  const docsDir = path.resolve(__dirname, '../docs');
   let components = [];
 
   for (let i = 0; i < nav.length; i++) {
@@ -79,13 +78,19 @@ module.exports = function extracter(config) {
 
   for (let i = 0; i < components.length; i++) {
     const item = components[i];
-    const itemMdFile = path.resolve(src, `./${item.path}/index.md`);
+    const itemMdFile = path.resolve(src, `./${item.path}.md`);
+    const itemMdFileInside = path.resolve(src, `./${item.path}/index.md`);
+    let itemMd;
 
-    if (!fs.existsSync(itemMdFile)) {
+    if (fs.existsSync(itemMdFile)) {
+      itemMd = fs.readFileSync(itemMdFile).toString();
+    } else if (fs.existsSync(itemMdFileInside)) {
+      itemMd = fs.readFileSync(itemMdFileInside).toString();
+    }
+    if (!itemMd) {
       continue;
     }
 
-    const itemMd = fs.readFileSync(itemMdFile).toString();
     const content = parser.render(itemMd);
     const result = renderVueTemplate(content, item.title);
     const exampleVueName = path.resolve(dist, `./${item.path}.vue`);

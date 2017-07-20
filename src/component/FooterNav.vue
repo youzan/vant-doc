@@ -5,7 +5,7 @@
       v-if="leftNav"
       class="zan-doc-footer-nav__link zan-doc-footer-nav__left"
       @click="handleNavClick('prev')">
-      <van-icon name="arrow"></van-icon>
+      <div class="zan-doc-footer-nav__arrow-left"></div>
       <span>{{ leftNav.title }}</span>
     </a>
     <a
@@ -14,14 +14,12 @@
       class="zan-doc-footer-nav__link zan-doc-footer-nav__right"
       @click="handleNavClick('next')">
       <span>{{ rightNav.title }}</span>
-      <van-icon name="arrow"></van-icon>
+      <div class="zan-doc-footer-nav__arrow-right"></div>
     </a>
   </div>
 </template>
 
 <script>
-import { Icon } from 'vant';
-
 export default {
   name: 'zan-doc-footer-nav',
 
@@ -36,10 +34,6 @@ export default {
       leftNav: null,
       rightNav: null
     };
-  },
-
-  components: {
-    'van-icon': Icon
   },
 
   watch: {
@@ -116,19 +110,34 @@ export default {
     }
   }
 
-  &__left {
-    .van-icon {
-      margin-right: 10px;
-      transform: rotate(180deg);
-    }
+  &__left,
+  &__right {
+    padding: 0 20px;
+    position: relative;
   }
 
   &__right {
     text-align: right;
-    
-    .van-icon {
-      margin-left: 10px;
-    }
+  }
+
+  &__arrow-left,
+  &__arrow-right {
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    border: solid $zan-doc-blue;
+    border-width: 0 1px 1px 0;
+  }
+
+  &__arrow-left {
+    left: 0;
+    transform: rotate(135deg) translateY(50%);
+  }
+
+  &__arrow-right {
+    right: 0;
+    transform: rotate(-45deg) translateY(-50%);
   }
 }
 </style>
