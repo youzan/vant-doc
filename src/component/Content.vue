@@ -107,6 +107,9 @@ export default {
       vertical-align: middle;
     }
 
+    .zan-doc-table code {
+      padding: 0 10px;
+    }
   }
 }
 </style>

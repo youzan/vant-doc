@@ -24,7 +24,7 @@ const renderVueTemplate = function(html, componentTitle) {
   const componentName = decamelize(componentTitle.split(' ')[0], '-');
   return `
     <template>
-      <section>
+      <section class="demo-${componentName}">
         <h1 class="zan-doc-demo-block__title">${componentTitle}</h1>
         ${output.demo}
       </section>
