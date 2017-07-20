@@ -18,39 +18,19 @@ const renderVueTemplate = function(html, componentTitle) {
   const output = {
     style: $.html('style'),
     script: $.html('script'),
-    'example-block': $.html('example-block')
+    demo: $.html('zan-doc-demo-block')
   };
-
-  $('style').remove();
-  $('script').remove();
-
-  let script = '';
-  if (output.script) {
-    script = output.script.replace('<script>', `
-      <script>
-        import Vue from "vue";
-        import ExampleBlock from "../components/example-block";
-        Vue.component("example-block", ExampleBlock);
-    `);
-  } else {
-    script = `
-      <script>
-        import Vue from "vue";
-        import ExampleBlock from "../components/example-block";
-        Vue.component("example-block", ExampleBlock);
-      </script>`;
-  }
 
   const componentName = decamelize(componentTitle.split(' ')[0], '-');
   return `
     <template>
-      <section class="demo-${componentName}">
-        <h1 class="demo-title">${componentTitle}</h1>
-        ${output['example-block']}
+      <section>
+        <h1 class="zan-doc-demo-block__title">${componentTitle}</h1>
+        ${output.demo}
       </section>
     </template>
     ${output.style}
-    ${script}
+    ${output.script}
   `;
 };
 
@@ -67,12 +47,12 @@ parser.use(markdownItContainer, 'demo', {
   },
 
   render: function(tokens, idx) {
-    const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
     if (tokens[idx].nesting === 1) {
+      const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
       const description = (m && m.length > 1) ? m[1] : '';
       const content = tokens[idx + 1].content;
       const html = convert(stripTags(content, ['script', 'style']));
-      return `<example-block title="${description}">${html}</example-block>\n`;
+      return `<zan-doc-demo-block title="${description}">${html}</zan-doc-demo-block>\n`;
     }
     return '';
   }

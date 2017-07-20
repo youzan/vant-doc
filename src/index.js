@@ -8,8 +8,9 @@ import Content from './component/Content.vue';
 import Container from './component/Container.vue';
 import FooterNav from './component/FooterNav.vue';
 import Simulator from './component/Simulator.vue';
+import DemoBlock from './component/DemoBlock.vue';
 
-const components = [Nav, Header, Footer, ZanDoc, Block, Content, Container, FooterNav, Simulator];
+const components = [Nav, Header, Footer, ZanDoc, Block, Content, Container, FooterNav, Simulator, DemoBlock];
 
 export default function install() {
   components.map(Component => {

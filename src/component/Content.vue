@@ -66,6 +66,10 @@ export default {
       font-size: 14px;
       line-height: 20px;
       color: $zan-doc-dark-grey;
+
+      a {
+        color: $zan-doc-blue;
+      }
     }
 
     > ul li,
@@ -102,6 +106,7 @@ export default {
       display: inline-block;
       vertical-align: middle;
     }
+
   }
 }
 </style>
