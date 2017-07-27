@@ -20,7 +20,6 @@ export default {
   .highlight {
     flex: 1;
     box-sizing: border-box;
-    margin-right: $zan-doc-padding;
 
     pre {
       word-break: break-all;

@@ -45,6 +45,11 @@ export default {
   max-width: 240px;
   border-right: 1px solid $zan-doc-border-color;
 
+  @media (max-width: 1300px) {
+    min-width: 220px;
+    max-width: 220px;
+  }
+
   &__item,
   &__subitem {
     a {
@@ -79,6 +84,25 @@ export default {
     line-height: 26px;
     padding-left: 22px;
     color: $zan-doc-dark-grey;
+  }
+
+  @media (max-width: 1300px) {
+    min-width: 220px;
+    max-width: 220px;
+
+    &__item,
+    &__subitem {
+      a {
+        line-height: 22px;
+      }
+    }
+
+    &__subitem {
+      a {
+        font-size: 13px;
+        padding-left: 30px;
+      }
+    }
   }
 }
 </style>

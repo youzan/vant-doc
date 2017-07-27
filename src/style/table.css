@@ -3,6 +3,7 @@
 .zan-doc-table {
   width: 100%;
   font-size: 13px;
+  line-height: 1.5;
   margin-bottom: 45px;
   background-color: #fff;
   border-collapse: collapse;
@@ -10,7 +11,7 @@
   font-family: Source Code Pro,Monaco,Inconsolata,monospace;
 
   th {
-    padding: 10px;
+    padding: 8px 10px;
     text-align: left;
     background-color: #f5f5f5;
     border: 1px solid $zan-doc-border-color;

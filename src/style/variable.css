@@ -13,4 +13,7 @@ $zan-doc-header-bottom-height: 50px;
 
 /* simulator */
 $zan-doc-simulator-width: 375px;
+$zan-doc-simulator-small-width: 320px;
 $zan-doc-simulator-height: 620px;
+$zan-doc-simulator-small-height: 560px;
+

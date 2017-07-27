@@ -15,6 +15,12 @@ module.exports = {
             },
         ]
     },
+    resolve: {
+        extensions: ['.js', '.vue', '.css'],
+        alias: {
+            vue$: 'vue/dist/vue.esm.js'
+        }
+    },
     performance: {
         hints: false
     },

@@ -1,6 +1,8 @@
 @import './variable';
 
 body {
+  min-width: 1100px;
+  overflow-x: auto;
   -webkit-font-smoothing: antialiased;
   font-family: "PingFang SC", "Helvetica Neue", Helvetica,Arial, sans-serif;
 }

@@ -27,15 +27,11 @@ export default {
     window.addEventListener('scroll', () => {
       this.scrollTop = window.scrollY;
     });
+    this.onSrcChanged();
   },
 
   watch:{
-    src() {
-      const { iframe } = this.$refs;
-      if (iframe && iframe.contentWindow) {
-        this.iframeHostName = iframe.contentWindow.location.host;
-      }
-    }
+    src: this.onSrcChanged
   },
 
   computed: {
@@ -49,6 +45,12 @@ export default {
       const { iframe } = this.$refs;
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.location.reload();
+      }
+    },
+    onSrcChanged() {
+      const { iframe } = this.$refs;
+      if (iframe && iframe.contentWindow) {
+        this.iframeHostName = iframe.contentWindow.location.host;
       }
     }
   }
@@ -71,6 +73,17 @@ export default {
   min-width: $zan-doc-simulator-width;
   top: calc($zan-doc-padding + $zan-doc-header-top-height);
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+
+  @media (max-width: 1300px) {
+    width: $zan-doc-simulator-small-width;
+    height: $zan-doc-simulator-small-height;
+    min-width: $zan-doc-simulator-small-width;
+  }
+
+  @media (max-width: 1100px) {
+    left: 750px;
+    right: auto;
+  }
 
   &-fixed {
     top: $zan-doc-padding;

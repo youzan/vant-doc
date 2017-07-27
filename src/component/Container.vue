@@ -27,6 +27,10 @@ export default {
 
   &--with-simulator {
     margin-right: calc($zan-doc-simulator-width + $zan-doc-padding * 2);
+
+    @media (max-width: 1300px) {
+      margin-right: calc($zan-doc-simulator-small-width + $zan-doc-padding * 2);      
+    }
   }
 }
 </style>
