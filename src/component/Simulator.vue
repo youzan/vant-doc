@@ -27,11 +27,19 @@ export default {
     window.addEventListener('scroll', () => {
       this.scrollTop = window.scrollY;
     });
-    this.onSrcChanged();
+    
+    const { iframe } = this.$refs;
+    if (iframe) {
+      iframe.onload = () => {
+        this.onSrcChanged();
+      }
+    }
   },
 
   watch:{
-    src: this.onSrcChanged
+    src() {
+      this.onSrcChanged();
+    }
   },
 
   computed: {
@@ -86,8 +94,10 @@ export default {
   }
 
   &-fixed {
-    top: $zan-doc-padding;
-    position: fixed;
+    @media (min-width: 1300px) {
+      top: $zan-doc-padding;
+      position: fixed;
+    }
   }
 
   iframe {
@@ -111,6 +121,11 @@ export default {
     text-align: center;
     font-weight: bold;
     line-height: 28px;
+
+    @media (max-width: 1300px) {
+      top: 21px;
+      line-height: 24px;
+    }
   }
 
   &__reload {

@@ -30,10 +30,6 @@ export default {
       line-height: 1.5;
       font-weight: normal;
       color: $zan-doc-text-color;
-
-      a {
-        display: none;
-      }
     }
 
     > h1 {
