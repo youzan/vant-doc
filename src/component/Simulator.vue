@@ -102,10 +102,10 @@ export default {
 
   iframe {
     width: 100%;
-    height: $zan-doc-simulator-height - $zan-doc-header-top-height - 4px;
+    height: calc($zan-doc-simulator-height - $zan-doc-header-top-height - 4px);
 
     @media (max-width: 1300px) {
-      height: $zan-doc-simulator-small-height - $zan-doc-header-top-height - 4px;
+      height: calc($zan-doc-simulator-small-height - $zan-doc-header-top-height - 4px);
     }
   }
 
