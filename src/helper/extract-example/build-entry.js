@@ -22,7 +22,7 @@ module.exports = function({ nav, src, dist }) {
       return;
     }
     const name = nav.path.replace('/', '');
-    const docPath = fs.existsSync(`./${name}.md`) ? `./${name}.md` : `./${name}/index.md`;
+    const docPath = fs.existsSync(path.resolve(src, `./${name}.md`)) ? `./${name}.md` : `./${name}/index.md`;
     docs.push(`'${name}': r => require.ensure([], () => r(require('${path.resolve(src, docPath)}')), '${name}.md')`);
     if (!nav.noExample) {
       demos.push(`'${name}': r => require.ensure([], () => r(require('./${name}.vue')), '${name}.vue')`);      
