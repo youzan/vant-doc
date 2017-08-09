@@ -18,8 +18,12 @@ module.exports = function({ nav, src, dist }) {
   });
 
   function addComponent(nav) {
+    if (!nav.path) {
+      return;
+    }
     const name = nav.path.replace('/', '');
-    docs.push(`'${name}': r => require.ensure([], () => r(require('${path.resolve(src, `./${name}/index.md`)}')), '${name}.md')`);
+    const docPath = fs.existsSync(`./${name}.md`) ? `./${name}.md` : `./${name}/index.md`;
+    docs.push(`'${name}': r => require.ensure([], () => r(require('${path.resolve(src, docPath)}')), '${name}.md')`);
     if (!nav.noExample) {
       demos.push(`'${name}': r => require.ensure([], () => r(require('./${name}.vue')), '${name}.vue')`);      
     }

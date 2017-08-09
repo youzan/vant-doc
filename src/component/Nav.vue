@@ -2,18 +2,17 @@
   <div class="zan-doc-nav">
     <ul>
       <li class="zan-doc-nav__item" v-for="(item, index) in navConfig" :key="index">
-        <a v-if="!item.path">{{item.name}}</a>
-        <router-link v-else active-class="active" :to="base + item.path" exact v-text="item.title || item.name" />
+        <zan-doc-nav-link :item="item" :base="base" />
         <ul v-if="item.children">
           <li class="nav-item" v-for="(navItem, index) in item.children" :key="index">
-            <router-link active-class="active" :to="base + navItem.path" v-text="navItem.title || navItem.name" />
+            <zan-doc-nav-link :item="navItem" :base="base" />
           </li>
         </ul>
         <div v-if="item.groups" v-for="(group, index) in item.groups" :key="index">
-          <div class="zan-doc-nav__group-title">{{group.groupName}}</div>
+          <div class="zan-doc-nav__group-title">{{ group.groupName }}</div>
           <ul>
             <li :key="index" class="zan-doc-nav__subitem" v-for="(navItem, index) in group.list" v-if="!navItem.disabled">
-              <router-link active-class="active" :to="base + navItem.path" v-text="navItem.title" />
+              <zan-doc-nav-link :item="navItem" :base="base" />              
             </li>
           </ul>
         </div>
@@ -23,8 +22,14 @@
 </template>
 
 <script>
+import NavLink from './NavLink.vue';
+
 export default {
   name: 'zan-doc-nav',
+
+  components: {
+    [NavLink.name]: NavLink
+  },
 
   props: {
     navConfig: Array,

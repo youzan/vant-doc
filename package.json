@@ -1,12 +1,12 @@
 {
   "name": "zan-doc",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "youzan document template",
   "main": "./dist/index.js",
   "scripts": {
     "test": "npm test",
     "dev": "node_modules/.bin/webpack-dev-server --config ./build/webpack.dev.conf.js",
-    "build": "webpack -p --hide-modules --config ./build/webpack.prod.conf.js",
+    "build": "webpack --hide-modules --progress --config ./build/webpack.prod.conf.js",
     "release": "npm run build && npm publish"
   },
   "repository": {
