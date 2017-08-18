@@ -16,6 +16,10 @@ export default {
 .zan-doc-content {
   flex: 1;
 
+  a {
+    color: $zan-doc-blue;
+  }
+
   section {
     padding: 0 $zan-doc-padding;
     overflow: hidden;
@@ -26,9 +30,9 @@ export default {
     > h4,
     > h5,
     > h6 {
-      margin: 20px 0;
       line-height: 1.5;
       font-weight: normal;
+      margin: 20px 0 10px;
       color: $zan-doc-text-color;
     }
 
@@ -41,11 +45,11 @@ export default {
     }
 
     > h3 {
-      font-size: 24px;
+      font-size: 22px;
     }
 
     > h4 {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     > h5 {
@@ -62,10 +66,6 @@ export default {
       font-size: 14px;
       line-height: 20px;
       color: $zan-doc-dark-grey;
-
-      a {
-        color: $zan-doc-blue;
-      }
     }
 
     > ul li,
@@ -97,8 +97,8 @@ export default {
     p > code,
     li > code,
     .zan-doc-table code {
-      margin: 0 5px;
-      padding: 2px 10px;
+      margin: 0 2px;
+      padding: 2px 7px;
       display: inline-block;
       vertical-align: middle;
     }
