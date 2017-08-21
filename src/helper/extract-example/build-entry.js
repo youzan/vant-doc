@@ -1,6 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 
+const wrapAsyncComponent = `import progress from 'nprogress';
+import 'nprogress/nprogress.css';
+
+function wrapAsyncComponent(component) {
+  return function (r) {
+    progress.start();
+    component(r).then(() => {
+      window.scrollTo(0, 0);
+      progress.done();
+    }).catch(() => {
+      progress.done();
+    });
+  }
+}
+`;
+
 module.exports = function({ nav, src, dist }) {
   const docs = [];
   const demos = [];
@@ -23,7 +39,7 @@ module.exports = function({ nav, src, dist }) {
     }
     const name = nav.path.replace('/', '');
     const docPath = fs.existsSync(path.resolve(src, `./${name}.md`)) ? `./${name}.md` : `./${name}/index.md`;
-    docs.push(`'${name}': r => require.ensure([], () => r(require('${path.resolve(src, docPath)}')), '${name}.md')`);
+    docs.push(`'${name}': wrapAsyncComponent(r => require.ensure([], () => r(require('${path.resolve(src, docPath)}')), '${name}.md'))`);
     if (!nav.noExample) {
       demos.push(`'${name}': r => require.ensure([], () => r(require('./${name}.vue')), '${name}.vue')`);      
     }
@@ -39,6 +55,6 @@ module.exports = function({ nav, src, dist }) {
     fs.closeSync(fs.openSync(entryDemos, 'w'));
   }
 
-  fs.writeFileSync(entryDocs, `export default {\n  ${docs.join(',\n  ')}\n};\n`, { encoding: 'utf8' });
+  fs.writeFileSync(entryDocs, `${wrapAsyncComponent}\nexport default {\n  ${docs.join(',\n  ')}\n};\n`, { encoding: 'utf8' });  
   fs.writeFileSync(entryDemos, `export default {\n  ${demos.join(',\n  ')}\n};\n`, { encoding: 'utf8' });
 }
