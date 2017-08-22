@@ -75,7 +75,12 @@ export default {
     },
 
     handleNavClick(direction) {
-      this.$router.push(`/component${ direction === 'prev' ? this.leftNav.path : this.rightNav.path }`);
+      const nav = direction === 'prev' ? this.leftNav : this.rightNav;
+      if (nav.path) {
+        this.$router.push(`/component${ nav.path }`);
+      } else if (nav.link) {
+        location.href = nav.link;
+      }
     }
   },
 

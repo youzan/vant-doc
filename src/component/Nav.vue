@@ -60,15 +60,15 @@ export default {
     a {
       margin: 0;
       display: block;
+      color: #455a64;
       font-size: 16px;
       padding: 8px 20px;
       line-height: 24px;
       transition: all .3s;
-      color: $zan-doc-text-color;
 
       &.active {
         color: $zan-doc-blue;
-        background-color: #f2f2f2;
+        background-color: #f5f7fa;
       }
     }
   }
@@ -86,9 +86,9 @@ export default {
 
   &__group-title {
     font-size: 12px;
-    line-height: 26px;
+    line-height: 30px;
     padding-left: 22px;
-    color: $zan-doc-dark-grey;
+    color: rgba(51, 51, 51, .6);
   }
 
   @media (max-width: 1300px) {
