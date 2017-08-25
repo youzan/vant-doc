@@ -98,6 +98,11 @@ export default {
       }
     }
 
+    hr {
+      border: 0px none;
+      border-top: 1px solid #eee;
+    }
+
     p > code,
     li > code,
     .zan-doc-table code {
