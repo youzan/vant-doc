@@ -98,7 +98,7 @@ export default {
       }
     }
 
-    hr {
+    > hr {
       border: 0px none;
       border-top: 1px solid #eee;
     }
