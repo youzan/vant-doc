@@ -8,7 +8,6 @@ function wrapAsyncComponent(component) {
   return function (r) {
     progress.start();
     component(r).then(() => {
-      window.scrollTo(0, 0);
       progress.done();
     }).catch(() => {
       progress.done();
