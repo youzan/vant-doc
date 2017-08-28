@@ -15,6 +15,7 @@ code {
   line-height: 21px;
   border-radius: 4px;
   margin-bottom: 25px;
+  word-break: break-all;
   white-space: pre-wrap;
   background-color: #f5f7fa;
   color: $zan-doc-code-color;
