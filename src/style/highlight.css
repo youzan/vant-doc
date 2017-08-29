@@ -1,11 +1,3 @@
-/*
-
-Colorbrewer theme
-Original: https://github.com/mbostock/colorbrewer-theme (c) Mike Bostock <mike@ocks.org>
-Ported by Fabrício Tavares de Oliveira
-
-*/
-
 .hljs {
   display: block;
   overflow-x: auto;
@@ -13,9 +5,8 @@ Ported by Fabrício Tavares de Oliveira
   background: #fff;
 }
 
-.hljs,
 .hljs-subst {
-  color: #000;
+  color: #455a64;
 }
 
 .hljs-string,
