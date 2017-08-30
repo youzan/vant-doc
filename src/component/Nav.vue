@@ -80,15 +80,21 @@ export default {
 
       &:hover {
         color: $zan-doc-blue;
+        background-color: #f5f7fa;
       }
+    }
+
+    span {
+      opacity: .6;
+      font-size: 13px;
     }
   }
 
   &__group-title {
     font-size: 12px;
-    line-height: 30px;
+    line-height: 40px;
     padding-left: 22px;
-    color: rgba(51, 51, 51, .6);
+    color: $zan-doc-text-light-blue;
   }
 
   @media (max-width: 1300px) {

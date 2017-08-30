@@ -43,12 +43,19 @@ export default {
 
       li {
         display: inline-block;
+
+        &:last-child {
+          a {
+            margin-right: 5px;
+          }
+        }
       }
 
       a {
         margin: 0 20px;
         font-size: 15px;
         display: block;
+        letter-spacing: 1px;
         color: $zan-doc-text-color;
 
         &:hover,

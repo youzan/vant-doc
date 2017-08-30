@@ -15,6 +15,8 @@ export default {
 
 .zan-doc-content {
   flex: 1;
+  position: relative;
+  padding-bottom: 75px;
 
   a {
     color: $zan-doc-blue;
@@ -33,7 +35,7 @@ export default {
       line-height: 1.5;
       font-weight: normal;
       margin: 20px 0 10px;
-      color: $zan-doc-text-color;
+      color: rgba(51, 51, 51, .9);
     }
 
     > h1 {
@@ -45,11 +47,11 @@ export default {
     }
 
     > h3 {
-      font-size: 22px;
+      font-size: 20px;
     }
 
     > h4 {
-      font-size: 18px;
+      font-size: 16px;
     }
 
     > h5 {
@@ -74,19 +76,20 @@ export default {
       font-size: 14px;
       line-height: 20px;
       margin: 10px 0 10px 20px;
-      padding-left: 20px;
+      padding-left: 15px;
       position: relative;
 
       &::before {
         content: '';
         position: absolute;
-        top: 6px;
+        top: 50%;
         left: 0;
-        width: 8px;
-        height: 8px;
-        box-sizing: border-box;
-        border: 2px solid $zan-doc-grey;
+        width: 4px;
+        height: 4px;
+        margin-top: -1px;
         border-radius: 50%;
+        box-sizing: border-box;
+        background-color: $zan-doc-dark-grey;
       }
 
       li {

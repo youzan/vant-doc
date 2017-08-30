@@ -1,6 +1,6 @@
 {
   "name": "zan-doc",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "youzan document template",
   "main": "./dist/index.js",
   "scripts": {

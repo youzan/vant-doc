@@ -1,9 +1,10 @@
 $zan-doc-blue: #38f;
 $zan-doc-text-color: #333;
+$zan-doc-text-light-blue: rgba(69, 90, 100, .6);
 $zan-doc-grey: #999;
 $zan-doc-dark-grey: #666;
 $zan-doc-light-grey: #ccc;
-$zan-doc-border-color: #eaeaea;
+$zan-doc-border-color: #eaeefb;;
 $zan-doc-code-color: #455a64;
 $zan-doc-padding: 30px;
 

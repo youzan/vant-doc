@@ -95,8 +95,12 @@ export default {
 @import '../style/variable';
 
 .zan-doc-footer-nav {
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   padding: 24px 40px;
+  position: absolute;
   border-top: 1px solid $zan-doc-border-color;
 
   &__link {
