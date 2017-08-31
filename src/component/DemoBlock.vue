@@ -33,8 +33,8 @@ export default {
 
   &__subtitle {
     font-size: 14px;
-    color: $zan-doc-grey;
-    padding: 30px 15px 10px;
+    color: $zan-doc-text-light-blue;
+    padding: 40px 15px 10px;
   }
 }
 </style>

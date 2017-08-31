@@ -1,3 +1,56 @@
+@import './variable';
+
+code {
+  display: block;
+  font-size: 13px;
+  overflow-x: auto;
+  font-weight: 400;
+  line-height: 22px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  position: relative;
+  word-break: break-all;
+  white-space: pre-wrap;
+  background-color: #f5f7fa;
+  color: $zan-doc-code-color;
+  padding: 18px 10px 18px 20px;
+  font-family: "Source Code Pro", "Monaco", "Inconsolata", monospace;
+
+  &::after {
+    top: 5px;
+    right: 10px;
+    position: absolute;
+    color: #ccc;
+    font-size: 12px;
+  }
+}
+
+pre {
+  margin: 0;
+
+  + pre {
+    margin-top: -10px;
+  }
+}
+
+code.language-html {
+  &::after {
+    content: 'HTML';
+  }
+}
+
+code.language-javascript {
+  &::after {
+    content: 'JS';
+  }
+}
+
+code.language-css {
+  &::after {
+    content: 'CSS';
+  }
+}
+
 .hljs {
   display: block;
   overflow-x: auto;
@@ -6,7 +59,7 @@
 }
 
 .hljs-subst {
-  color: #455a64;
+  color: $zan-doc-code-color;
 }
 
 .hljs-string,
