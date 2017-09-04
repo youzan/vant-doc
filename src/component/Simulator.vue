@@ -30,8 +30,12 @@ export default {
     
     const { iframe } = this.$refs;
     if (iframe) {
-      iframe.onload = () => {
-        this.onSrcChanged();
+      if (iframe.contentDocument.readyState === 'complete') {
+        setTimeout(this.onSrcChanged, 0);
+      } else {
+        iframe.onload = () => {
+          this.onSrcChanged();
+        }
       }
     }
   },
