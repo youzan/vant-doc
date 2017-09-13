@@ -4,7 +4,7 @@
       <div class="zan-doc-simulator__url">{{ iframeHostName }}</div>
       <div class="zan-doc-simulator__reload" @click="reloadIframe"></div>
     </div>
-    <iframe ref="iframe" :src="src" frameborder="0" />
+    <iframe ref="iframe" :src="src" :style="simulatorStyle" frameborder="0" />
   </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
   data() {
     return {
       scrollTop: window.scrollY,
-      iframeHostName: ''
+      iframeHostName: '',
+      windowHeight: window.innerHeight
     };
   },
 
@@ -27,6 +28,9 @@ export default {
     window.addEventListener('scroll', () => {
       this.scrollTop = window.scrollY;
     });
+    window.addEventListener('resize', () => {
+      this.windowHeight = window.innerHeight;
+    })
     
     const { iframe } = this.$refs;
     if (iframe) {
@@ -49,6 +53,12 @@ export default {
   computed: {
     isFixed() {
       return this.scrollTop > 60;
+    },
+    simulatorStyle() {
+      const height = Math.min(556, this.windowHeight - 222);
+      return {
+        height: height + 'px'
+      };
     }
   },
 
@@ -81,14 +91,12 @@ export default {
   box-sizing: border-box;
   right: $zan-doc-padding;
   width: $zan-doc-simulator-width;
-  height: $zan-doc-simulator-height;
   min-width: $zan-doc-simulator-width;
   top: calc($zan-doc-padding + $zan-doc-header-top-height);
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
 
   @media (max-width: 1300px) {
     width: $zan-doc-simulator-small-width;
-    height: $zan-doc-simulator-small-height;
     min-width: $zan-doc-simulator-small-width;
   }
 
@@ -98,19 +106,12 @@ export default {
   }
 
   &-fixed {
-    @media (min-width: 1300px) {
-      top: $zan-doc-padding;
-      position: fixed;
-    }
+    position: fixed;
+    top: $zan-doc-padding;
   }
 
   iframe {
     width: 100%;
-    height: calc($zan-doc-simulator-height - $zan-doc-header-top-height - 4px);
-
-    @media (max-width: 1300px) {
-      height: calc($zan-doc-simulator-small-height - $zan-doc-header-top-height - 4px);
-    }
   }
 
   &__nav {
