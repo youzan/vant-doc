@@ -19,6 +19,12 @@ export default {
 @import '../style/variable';
 
 .zan-doc-demo-block {
+  &__title,
+  &__subtitle {
+    margin: 0;
+    font-weight: normal;
+  }
+
   &__title {
     padding: 15px;
     font-size: 16px;
