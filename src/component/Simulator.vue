@@ -112,6 +112,7 @@ export default {
 
   iframe {
     width: 100%;
+    display: block;
   }
 
   &__nav {
