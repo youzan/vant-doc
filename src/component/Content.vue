@@ -1,12 +1,22 @@
 <template>
-  <div class="zan-doc-content">
+  <div :class="['zan-doc-content', `zan-doc-content--${currentPage}`]">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'zan-doc-content'
+  name: 'zan-doc-content',
+
+  computed: {
+    currentPage() {
+      const { path } = this.$route;
+      if (path) {
+        return path.split('/').slice(-1)[0];
+      }
+      return this.$route.name;
+    }
+  }
 }
 </script>
 
@@ -75,7 +85,7 @@ export default {
       color: #666;
       font-size: 14px;
       line-height: 20px;
-      margin: 10px 0 10px 20px;
+      margin: 5px 0 5px 20px;
       padding-left: 15px;
       position: relative;
 
@@ -84,12 +94,12 @@ export default {
         position: absolute;
         top: 50%;
         left: 0;
-        width: 4px;
-        height: 4px;
-        margin-top: -1px;
+        width: 6px;
+        height: 6px;
+        margin-top: -2px;
         border-radius: 50%;
         box-sizing: border-box;
-        background-color: $zan-doc-dark-grey;
+        border: 1px solid $zan-doc-dark-grey;
       }
 
       li {
@@ -113,6 +123,32 @@ export default {
 
     .zan-doc-table code {
       padding: 0 8px;
+    }
+  }
+
+  &--changelog {
+    section {
+      padding-bottom: 30px;
+
+      > h3 {
+        + p {
+          margin: 0;
+
+          code {
+            margin: 0;
+          }
+        }
+
+        a {
+          color: inherit;
+          font-size: 24px;
+          -webkit-font-smoothing: auto;
+        }
+
+        &:not(:first-of-type) {
+          margin-top: 50px;
+        }
+      }
     }
   }
 }
