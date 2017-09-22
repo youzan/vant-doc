@@ -105,14 +105,14 @@ export default {
     p > code,
     li > code,
     .zan-doc-table code {
-      margin: 0 2px;
+      margin: 2px;
       padding: 2px 7px;
       display: inline-block;
       vertical-align: middle;
     }
 
     .zan-doc-table code {
-      padding: 0 10px;
+      padding: 0 8px;
     }
   }
 }
