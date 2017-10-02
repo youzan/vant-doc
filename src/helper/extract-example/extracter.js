@@ -59,22 +59,26 @@ parser.use(markdownItContainer, 'demo', {
 });
 
 module.exports = function extracter(config) {
-  const { src, dist, nav } = config;
+  const { src, dist, nav: navConig } = config;
   let components = [];
 
-  for (let i = 0; i < nav.length; i++) {
-    const navItem = nav[i];
+  Object.keys(navConig).forEach(lang => {
+    const nav = navConig[lang].nav || [];
 
-    if (!navItem.showInMobile) continue;
+    nav.forEach((navItem, i) => {
+      console.log('navItem', navItem)
+      if (!navItem.showInMobile) return;
 
-    if (!navItem.groups) {
-      components.push(nav[i]);
-    } else {
-      for (let j = 0; j < navItem.groups.length; j++) {
-        components = components.concat(navItem.groups[j].list);
+      if (!navItem.groups) {
+        components.push(navItem);
+      } else {
+        navItem.groups.forEach(navGroup => {
+          const list = navGroup.list;
+          components = components.concat(list);
+        });
       }
-    }
-  }
+    });
+  });
 
   for (let i = 0; i < components.length; i++) {
     const item = components[i];
