@@ -70,10 +70,10 @@ module.exports = function extracter(config) {
       if (!navItem.showInMobile) return;
 
       if (!navItem.groups) {
-        components.push(navItem);
+        components.push({ navItem, lang });
       } else {
         navItem.groups.forEach(navGroup => {
-          const list = navGroup.list;
+          const list = navGroup.list.map(item => ({ item, lang }));
           components = components.concat(list);
         });
       }
@@ -81,9 +81,9 @@ module.exports = function extracter(config) {
   });
 
   for (let i = 0; i < components.length; i++) {
-    const item = components[i];
-    const itemMdFile = path.resolve(src, `./${item.path}.md`);
-    const itemMdFileInside = path.resolve(src, `./${item.path}/index.md`);
+    const { item, lang } = components[i];
+    const itemMdFile = path.resolve(src, `./${lang}/${item.path}.md`);
+    const itemMdFileInside = path.resolve(src, `./${lang}/${item.path}/index.md`);
     let itemMd;
 
     if (fs.existsSync(itemMdFile)) {
@@ -97,11 +97,12 @@ module.exports = function extracter(config) {
 
     const content = parser.render(itemMd);
     const result = renderVueTemplate(content, item.title);
-    const exampleVueName = path.resolve(dist, `./${item.path}.vue`);
+    const exampleDir = path.resolve(dist, lang);
+    const exampleVueName = path.resolve(exampleDir, `./${item.path}.vue`);
 
     // 检查文件夹及文件是否存在
-    if (!fs.existsSync(dist)) {
-      fs.mkdirSync(dist);
+    if (!fs.existsSync(exampleDir)) {
+      fs.mkdirSync(exampleDir);
     }
     if (!fs.existsSync(exampleVueName)) {
       fs.closeSync(fs.openSync(exampleVueName, 'w'));

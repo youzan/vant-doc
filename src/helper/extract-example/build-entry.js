@@ -20,7 +20,8 @@ module.exports = function({ nav: navConfig, src, dist }) {
     });
 
     function addComponent(nav, lang) {
-      console.log(nav)
+      if (!nav.path) return
+
       const name = nav.path.replace('/', '');
       docs.push(`'${lang}/${name}': r => require.ensure([], () => r(require('${path.resolve(src, `./${lang}/${name}/index.md`)}')), '${name}.md')`);
       if (!nav.noExample) {
