@@ -75,7 +75,12 @@ export default {
     },
 
     handleNavClick(direction) {
-      this.$router.push(`/component${ direction === 'prev' ? this.leftNav.path : this.rightNav.path }`);
+      const nav = direction === 'prev' ? this.leftNav : this.rightNav;
+      if (nav.path) {
+        this.$router.push(`/component${ nav.path }`);
+      } else if (nav.link) {
+        location.href = nav.link;
+      }
     }
   },
 
@@ -90,8 +95,12 @@ export default {
 @import '../style/variable';
 
 .zan-doc-footer-nav {
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   padding: 24px 40px;
+  position: absolute;
   border-top: 1px solid $zan-doc-border-color;
 
   &__link {

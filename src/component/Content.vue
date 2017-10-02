@@ -1,12 +1,22 @@
 <template>
-  <div class="zan-doc-content">
+  <div :class="['zan-doc-content', `zan-doc-content--${currentPage}`]">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'zan-doc-content'
+  name: 'zan-doc-content',
+
+  computed: {
+    currentPage() {
+      const { path } = this.$route;
+      if (path) {
+        return path.split('/').slice(-1)[0];
+      }
+      return this.$route.name;
+    }
+  }
 }
 </script>
 
@@ -15,6 +25,12 @@ export default {
 
 .zan-doc-content {
   flex: 1;
+  position: relative;
+  padding-bottom: 75px;
+
+  a {
+    color: $zan-doc-blue;
+  }
 
   section {
     padding: 0 $zan-doc-padding;
@@ -26,14 +42,10 @@ export default {
     > h4,
     > h5,
     > h6 {
-      margin: 20px 0;
       line-height: 1.5;
       font-weight: normal;
-      color: $zan-doc-text-color;
-
-      a {
-        display: none;
-      }
+      margin: 20px 0 10px;
+      color: rgba(51, 51, 51, .9);
     }
 
     > h1 {
@@ -45,11 +57,11 @@ export default {
     }
 
     > h3 {
-      font-size: 24px;
+      font-size: 20px;
     }
 
     > h4 {
-      font-size: 20px;
+      font-size: 16px;
     }
 
     > h5 {
@@ -66,10 +78,6 @@ export default {
       font-size: 14px;
       line-height: 20px;
       color: $zan-doc-dark-grey;
-
-      a {
-        color: $zan-doc-blue;
-      }
     }
 
     > ul li,
@@ -77,20 +85,21 @@ export default {
       color: #666;
       font-size: 14px;
       line-height: 20px;
-      margin: 10px 0 10px 20px;
-      padding-left: 20px;
+      margin: 5px 0 5px 20px;
+      padding-left: 15px;
       position: relative;
 
       &::before {
         content: '';
         position: absolute;
-        top: 6px;
+        top: 50%;
         left: 0;
-        width: 8px;
-        height: 8px;
-        box-sizing: border-box;
-        border: 2px solid $zan-doc-grey;
+        width: 6px;
+        height: 6px;
+        margin-top: -2px;
         border-radius: 50%;
+        box-sizing: border-box;
+        border: 1px solid $zan-doc-dark-grey;
       }
 
       li {
@@ -106,14 +115,40 @@ export default {
     p > code,
     li > code,
     .zan-doc-table code {
-      margin: 0 5px;
-      padding: 2px 10px;
+      margin: 2px;
+      padding: 2px 7px;
       display: inline-block;
       vertical-align: middle;
     }
 
     .zan-doc-table code {
-      padding: 0 10px;
+      padding: 0 8px;
+    }
+  }
+
+  &--changelog {
+    section {
+      padding-bottom: 30px;
+
+      > h3 {
+        + p {
+          margin: 0;
+
+          code {
+            margin: 0;
+          }
+        }
+
+        a {
+          color: inherit;
+          font-size: 24px;
+          -webkit-font-smoothing: auto;
+        }
+
+        &:not(:first-of-type) {
+          margin-top: 50px;
+        }
+      }
     }
   }
 }

@@ -19,6 +19,12 @@ export default {
 @import '../style/variable';
 
 .zan-doc-demo-block {
+  &__title,
+  &__subtitle {
+    margin: 0;
+    font-weight: normal;
+  }
+
   &__title {
     padding: 15px;
     font-size: 16px;
@@ -33,8 +39,8 @@ export default {
 
   &__subtitle {
     font-size: 14px;
-    color: $zan-doc-grey;
-    padding: 30px 15px 10px;
+    color: $zan-doc-text-light-blue;
+    padding: 40px 15px 10px;
   }
 }
 </style>

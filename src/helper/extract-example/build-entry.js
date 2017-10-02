@@ -1,6 +1,21 @@
 const fs = require('fs');
 const path = require('path');
 
+const wrapAsyncComponent = `import progress from 'nprogress';
+import 'nprogress/nprogress.css';
+
+function wrapAsyncComponent(component) {
+  return function (r) {
+    progress.start();
+    component(r).then(() => {
+      progress.done();
+    }).catch(() => {
+      progress.done();
+    });
+  }
+}
+`;
+
 module.exports = function({ nav: navConfig, src, dist }) {
   const docs = [];
   const demos = [];
@@ -20,12 +35,14 @@ module.exports = function({ nav: navConfig, src, dist }) {
     });
 
     function addComponent(nav, lang) {
-      if (!nav.path) return
-
+      if (!nav.path) {
+        return;
+      }
       const name = nav.path.replace('/', '');
-      docs.push(`'${lang}/${name}': r => require.ensure([], () => r(require('${path.resolve(src, `./${lang}/${name}/index.md`)}')), '${name}.md')`);
+      const docPath = fs.existsSync(path.resolve(src, `./${lang}/${name}.md`)) ? `./${lang}/${name}.md` : `./${lang}/${name}/index.md`;
+      docs.push(`'${lang}/${name}': wrapAsyncComponent(r => require.ensure([], () => r(require('${path.resolve(src, docPath)}')), '${lang}/${name}.md'))`);
       if (!nav.noExample) {
-        demos.push(`'${lang}/${name}': r => require.ensure([], () => r(require('./${lang}/${name}.vue')), '${name}.vue')`);
+        demos.push(`'${lang}/${name}': r => require.ensure([], () => r(require('./${lang}/${name}.vue')), '${lang}/${name}.vue')`);
       }
     }
   })
@@ -40,6 +57,6 @@ module.exports = function({ nav: navConfig, src, dist }) {
     fs.closeSync(fs.openSync(entryDemos, 'w'));
   }
 
-  fs.writeFileSync(entryDocs, `export default {\n  ${docs.join(',\n  ')}\n};\n`, { encoding: 'utf8' });
+  fs.writeFileSync(entryDocs, `${wrapAsyncComponent}\nexport default {\n  ${docs.join(',\n  ')}\n};\n`, { encoding: 'utf8' });
   fs.writeFileSync(entryDemos, `export default {\n  ${demos.join(',\n  ')}\n};\n`, { encoding: 'utf8' });
 }

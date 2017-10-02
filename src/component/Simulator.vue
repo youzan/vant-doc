@@ -4,7 +4,7 @@
       <div class="zan-doc-simulator__url">{{ iframeHostName }}</div>
       <div class="zan-doc-simulator__reload" @click="reloadIframe"></div>
     </div>
-    <iframe ref="iframe" :src="src" frameborder="0" />
+    <iframe ref="iframe" :src="src" :style="simulatorStyle" frameborder="0" />
   </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
   data() {
     return {
       scrollTop: window.scrollY,
-      iframeHostName: ''
+      iframeHostName: '',
+      windowHeight: window.innerHeight
     };
   },
 
@@ -27,16 +28,37 @@ export default {
     window.addEventListener('scroll', () => {
       this.scrollTop = window.scrollY;
     });
-    this.onSrcChanged();
+    window.addEventListener('resize', () => {
+      this.windowHeight = window.innerHeight;
+    })
+    
+    const { iframe } = this.$refs;
+    if (iframe) {
+      if (iframe.contentDocument.readyState === 'complete') {
+        setTimeout(this.onSrcChanged, 0);
+      } else {
+        iframe.onload = () => {
+          this.onSrcChanged();
+        }
+      }
+    }
   },
 
   watch:{
-    src: this.onSrcChanged
+    src() {
+      this.onSrcChanged();
+    }
   },
 
   computed: {
     isFixed() {
       return this.scrollTop > 60;
+    },
+    simulatorStyle() {
+      const height = Math.min(556, this.windowHeight - 222);
+      return {
+        height: height + 'px'
+      };
     }
   },
 
@@ -50,7 +72,7 @@ export default {
     onSrcChanged() {
       const { iframe } = this.$refs;
       if (iframe && iframe.contentWindow) {
-        this.iframeHostName = iframe.contentWindow.location.host;
+        this.iframeHostName = iframe.contentWindow.location.host || location.host;
       }
     }
   }
@@ -69,14 +91,12 @@ export default {
   box-sizing: border-box;
   right: $zan-doc-padding;
   width: $zan-doc-simulator-width;
-  height: $zan-doc-simulator-height;
   min-width: $zan-doc-simulator-width;
   top: calc($zan-doc-padding + $zan-doc-header-top-height);
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
 
   @media (max-width: 1300px) {
     width: $zan-doc-simulator-small-width;
-    height: $zan-doc-simulator-small-height;
     min-width: $zan-doc-simulator-small-width;
   }
 
@@ -86,13 +106,13 @@ export default {
   }
 
   &-fixed {
-    top: $zan-doc-padding;
     position: fixed;
+    top: $zan-doc-padding;
   }
 
   iframe {
     width: 100%;
-    height: 556px;
+    display: block;
   }
 
   &__nav {
@@ -111,6 +131,11 @@ export default {
     text-align: center;
     font-weight: bold;
     line-height: 28px;
+
+    @media (max-width: 1300px) {
+      top: 21px;
+      line-height: 24px;
+    }
   }
 
   &__reload {
