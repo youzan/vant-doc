@@ -2,7 +2,7 @@
   <div class="zan-doc">
     <zan-doc-header :nav="config.header" active="移动端" />
     <zan-doc-container :hasSimulator="!!simulator">
-      <zan-doc-nav :navConfig="config.nav" base="/component" />
+      <zan-doc-nav :navConfig="config.nav" :base="base" />
       <zan-doc-content>
         <slot></slot>
         <zan-doc-footer-nav :navConfig="config.nav" />
@@ -22,7 +22,11 @@ export default {
       type: Object,
       required: true
     },
-    simulator: String
+    simulator: String,
+    base: {
+      type: String,
+      default: '/component'
+    }
   }
 }
 </script>
