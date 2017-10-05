@@ -66,7 +66,6 @@ module.exports = function extracter(config) {
     const nav = navConig[lang].nav || [];
 
     nav.forEach((navItem, i) => {
-      console.log('navItem', navItem)
       if (!navItem.showInMobile) return;
 
       if (!navItem.groups) {
