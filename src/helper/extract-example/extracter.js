@@ -59,27 +59,30 @@ parser.use(markdownItContainer, 'demo', {
 });
 
 module.exports = function extracter(config) {
-  const { src, dist, nav } = config;
+  const { src, dist, nav: navConig } = config;
   let components = [];
 
-  for (let i = 0; i < nav.length; i++) {
-    const navItem = nav[i];
+  Object.keys(navConig).forEach(lang => {
+    const nav = navConig[lang].nav || [];
 
-    if (!navItem.showInMobile) continue;
+    nav.forEach((navItem, i) => {
+      if (!navItem.showInMobile) return;
 
-    if (!navItem.groups) {
-      components.push(nav[i]);
-    } else {
-      for (let j = 0; j < navItem.groups.length; j++) {
-        components = components.concat(navItem.groups[j].list);
+      if (!navItem.groups) {
+        components.push({ navItem, lang });
+      } else {
+        navItem.groups.forEach(navGroup => {
+          const list = navGroup.list.map(item => ({ item, lang }));
+          components = components.concat(list);
+        });
       }
-    }
-  }
+    });
+  });
 
   for (let i = 0; i < components.length; i++) {
-    const item = components[i];
-    const itemMdFile = path.resolve(src, `./${item.path}.md`);
-    const itemMdFileInside = path.resolve(src, `./${item.path}/index.md`);
+    const { item, lang } = components[i];
+    const itemMdFile = path.resolve(src, `./${lang}/${item.path}.md`);
+    const itemMdFileInside = path.resolve(src, `./${lang}/${item.path}/index.md`);
     let itemMd;
 
     if (fs.existsSync(itemMdFile)) {
@@ -93,11 +96,12 @@ module.exports = function extracter(config) {
 
     const content = parser.render(itemMd);
     const result = renderVueTemplate(content, item.title);
-    const exampleVueName = path.resolve(dist, `./${item.path}.vue`);
+    const exampleDir = path.resolve(dist, lang);
+    const exampleVueName = path.resolve(exampleDir, `./${item.path}.vue`);
 
     // 检查文件夹及文件是否存在
-    if (!fs.existsSync(dist)) {
-      fs.mkdirSync(dist);
+    if (!fs.existsSync(exampleDir)) {
+      fs.mkdirSync(exampleDir);
     }
     if (!fs.existsSync(exampleVueName)) {
       fs.closeSync(fs.openSync(exampleVueName, 'w'));

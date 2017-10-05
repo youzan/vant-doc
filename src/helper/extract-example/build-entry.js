@@ -16,33 +16,36 @@ function wrapAsyncComponent(component) {
 }
 `;
 
-module.exports = function({ nav, src, dist }) {
+module.exports = function({ nav: navConfig, src, dist }) {
   const docs = [];
   const demos = [];
 
-  nav.forEach(nav => {
-    if (nav.groups) {
-      nav.groups.forEach(group => {
-        group.list.forEach(addComponent);
-      });
-    } else if (nav.children) {
-      nav.children.forEach(addComponent);
-    } else {
-      addComponent(nav);
-    }
-  });
+  Object.keys(navConfig).forEach(lang => {
+    const nav = navConfig[lang].nav || [];
+    nav.forEach(nav => {
+      if (nav.groups) {
+        nav.groups.forEach(group => {
+          group.list.forEach(nav => addComponent(nav, lang));
+        });
+      } else if (nav.children) {
+        nav.children.forEach(nav => addComponent(nav, lang));
+      } else {
+        addComponent(nav, lang);
+      }
+    });
 
-  function addComponent(nav) {
-    if (!nav.path) {
-      return;
+    function addComponent(nav, lang) {
+      if (!nav.path) {
+        return;
+      }
+      const name = nav.path.replace('/', '');
+      const docPath = fs.existsSync(path.resolve(src, `./${lang}/${name}.md`)) ? `./${lang}/${name}.md` : `./${lang}/${name}/index.md`;
+      docs.push(`'${lang}/${name}': wrapAsyncComponent(r => require.ensure([], () => r(require('${path.resolve(src, docPath)}')), '${lang}/${name}.md'))`);
+      if (!nav.noExample) {
+        demos.push(`'${lang}/${name}': r => require.ensure([], () => r(require('./${lang}/${name}.vue')), '${lang}/${name}.vue')`);
+      }
     }
-    const name = nav.path.replace('/', '');
-    const docPath = fs.existsSync(path.resolve(src, `./${name}.md`)) ? `./${name}.md` : `./${name}/index.md`;
-    docs.push(`'${name}': wrapAsyncComponent(r => require.ensure([], () => r(require('${path.resolve(src, docPath)}')), '${name}.md'))`);
-    if (!nav.noExample) {
-      demos.push(`'${name}': r => require.ensure([], () => r(require('./${name}.vue')), '${name}.vue')`);      
-    }
-  }
+  })
 
   const entryDocs = path.resolve(dist, './entry-docs.js');
   const entryDemos = path.resolve(dist, './entry-demos.js');
@@ -54,6 +57,6 @@ module.exports = function({ nav, src, dist }) {
     fs.closeSync(fs.openSync(entryDemos, 'w'));
   }
 
-  fs.writeFileSync(entryDocs, `${wrapAsyncComponent}\nexport default {\n  ${docs.join(',\n  ')}\n};\n`, { encoding: 'utf8' });  
+  fs.writeFileSync(entryDocs, `${wrapAsyncComponent}\nexport default {\n  ${docs.join(',\n  ')}\n};\n`, { encoding: 'utf8' });
   fs.writeFileSync(entryDemos, `export default {\n  ${demos.join(',\n  ')}\n};\n`, { encoding: 'utf8' });
 }
