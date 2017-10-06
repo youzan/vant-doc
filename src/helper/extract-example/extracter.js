@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const cheerio = require('cheerio');
 const decamelize = require('decamelize');
@@ -101,7 +101,7 @@ module.exports = function extracter(config) {
 
     // 检查文件夹及文件是否存在
     if (!fs.existsSync(exampleDir)) {
-      fs.mkdirSync(exampleDir);
+      fs.ensureDirSync(exampleDir);
     }
     if (!fs.existsSync(exampleVueName)) {
       fs.closeSync(fs.openSync(exampleVueName, 'w'));
@@ -111,4 +111,4 @@ module.exports = function extracter(config) {
   }
 
   buildEntry(config);
-}
+};

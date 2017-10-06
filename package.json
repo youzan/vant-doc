@@ -1,6 +1,6 @@
 {
   "name": "zan-doc",
-  "version": "0.2.17",
+  "version": "0.3.0",
   "description": "youzan document template",
   "main": "./dist/index.js",
   "scripts": {
@@ -46,6 +46,7 @@
   "dependencies": {
     "cheerio": "0.22.0",
     "decamelize": "^1.2.0",
+    "fs-extra": "^4.0.2",
     "markdown-it": "^8.3.2",
     "markdown-it-container": "^2.0.0",
     "node-watch": "^0.5.5",
