@@ -1,21 +1,19 @@
 <template>
   <div class="zan-doc-footer-nav">
-    <a
-      href="javascript:void(0)"
+    <div
       v-if="leftNav"
       class="zan-doc-footer-nav__link zan-doc-footer-nav__left"
       @click="handleNavClick('prev')">
       <div class="zan-doc-footer-nav__arrow-left"></div>
       <span>{{ leftNav.title }}</span>
-    </a>
-    <a
-      href="javascript:void(0)"
+    </div>
+    <div
       v-if="rightNav"
       class="zan-doc-footer-nav__link zan-doc-footer-nav__right"
       @click="handleNavClick('next')">
       <span>{{ rightNav.title }}</span>
       <div class="zan-doc-footer-nav__arrow-right"></div>
-    </a>
+    </div>
   </div>
 </template>
 
@@ -24,6 +22,7 @@ export default {
   name: 'zan-doc-footer-nav',
 
   props: {
+    base: String,
     navConfig: Array
   },
 
@@ -43,11 +42,17 @@ export default {
     }
   },
 
+  created() {
+    this.setNav();
+    this.updateNav();
+    this.keyboardHandler();
+  },
+
   methods: {
     setNav() {
-      let nav = this.navConfig;
+      const nav = this.navConfig;
       for (let i = 0; i < nav.length; i++) {
-        let navItem = nav[i];
+        const navItem = nav[i];
         if (!navItem.groups) {
           this.nav.push(nav[i]);
         } else {
@@ -59,10 +64,9 @@ export default {
     },
 
     updateNav() {
-      let baseUrl = '/component';
       let currentIndex;
 
-      this.currentPath = this.$route.path.slice(baseUrl.length);
+      this.currentPath = '/' + this.$route.path.split('/').pop();
 
       for (let i = 0, len = this.nav.length; i < len; i++) {
         if (this.nav[i].path === this.currentPath) {
@@ -77,16 +81,24 @@ export default {
     handleNavClick(direction) {
       const nav = direction === 'prev' ? this.leftNav : this.rightNav;
       if (nav.path) {
-        this.$router.push(`/component${ nav.path }`);
+        this.$router.push(this.base + nav.path);
       } else if (nav.link) {
-        location.href = nav.link;
+        window.location.href = nav.link;
       }
-    }
-  },
+    },
 
-  created() {
-    this.setNav();
-    this.updateNav();
+    keyboardHandler() {
+      window.addEventListener('keyup', (event) => {
+        switch (event.keyCode) {
+          case 37: // left
+            this.handleNavClick('prev');
+            break;
+          case 39: // right
+            this.handleNavClick('next');
+            break;
+        }
+      });
+    }
   }
 };
 </script>
@@ -105,9 +117,17 @@ export default {
 
   &__link {
     flex: 1;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.5;
-    color: $zan-doc-blue;
+    cursor: pointer;
+    opacity: .7;
+    color: $zan-doc-code-color;
+    transition: .3s;
+
+    &:hover {
+      opacity: 1;
+      color: $zan-doc-blue;
+    }
 
     .van-icon {
       font-size: 12px;
@@ -135,7 +155,7 @@ export default {
     width: 8px;
     height: 8px;
     position: absolute;
-    border: solid $zan-doc-blue;
+    border: solid currentColor;
     border-width: 0 1px 1px 0;
   }
 

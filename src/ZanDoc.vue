@@ -5,7 +5,7 @@
       <zan-doc-nav :navConfig="config.nav" :base="base" />
       <zan-doc-content>
         <slot></slot>
-        <zan-doc-footer-nav :navConfig="config.nav" />
+        <zan-doc-footer-nav :navConfig="config.nav" :base="base" />
       </zan-doc-content>
     </zan-doc-container>
     <zan-doc-simulator v-if="simulator" :src="simulator" />
@@ -28,7 +28,7 @@ export default {
       default: '/component'
     }
   }
-}
+};
 </script>
 
 <style lang="postcss">

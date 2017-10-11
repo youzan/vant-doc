@@ -1,5 +1,5 @@
 <template>
-  <div :class="['zan-doc-container',{ 'zan-doc-container--with-simulator': hasSimulator }]">
+  <div :class="['zan-doc-container', { 'zan-doc-container--with-simulator': hasSimulator }]">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
   props: {
     hasSimulator: Boolean
   }
-}
+};
 </script>
 
 <style lang="postcss">

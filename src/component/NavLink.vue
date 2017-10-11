@@ -15,5 +15,5 @@ export default {
       return `${name[0]} <span>${name.slice(1).join(' - ')}</span>`;
     }
   }
-}
+};
 </script>
