@@ -8,7 +8,7 @@ body {
   overflow-x: auto;
   background-color: #f8f8f8;
   -webkit-font-smoothing: antialiased;
-  font-family: "PingFang SC", "Helvetica Neue", Helvetica,Arial, sans-serif;
+  font-family: PingFang SC, "Helvetica Neue", Arial, sans-serif;
 }
 
 p {

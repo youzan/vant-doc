@@ -76,7 +76,7 @@ export default {
       }
     }
   }
-}
+};
 </script>
 
 <style lang="postcss">
@@ -131,6 +131,7 @@ export default {
     text-align: center;
     font-weight: bold;
     line-height: 28px;
+    font-family: PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
 
     @media (max-width: 1300px) {
       top: 21px;

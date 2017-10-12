@@ -8,11 +8,11 @@
   background-color: #fff;
   border-collapse: collapse;
   color: $zan-doc-text-color;
-  font-family: Source Code Pro,Monaco,Inconsolata,monospace;
 
   th {
     padding: 8px 10px;
     text-align: left;
+    font-weight: normal;
     background-color: #f5f7fa;
     border: 1px solid $zan-doc-border-color;
 
@@ -24,5 +24,11 @@
   td {
     padding: 8px;
     border: 1px solid $zan-doc-border-color;
+  }
+
+  code {
+    font-size: 13px;
+    padding: 0 8px;
+    font-family: inherit;
   }
 }
