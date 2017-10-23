@@ -30,8 +30,8 @@ export default {
     });
     window.addEventListener('resize', () => {
       this.windowHeight = window.innerHeight;
-    })
-    
+    });
+
     const { iframe } = this.$refs;
     if (iframe) {
       if (iframe.contentDocument.readyState === 'complete') {
@@ -39,7 +39,7 @@ export default {
       } else {
         iframe.onload = () => {
           this.onSrcChanged();
-        }
+        };
       }
     }
   },
