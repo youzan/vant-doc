@@ -72,7 +72,11 @@ export default {
     onSrcChanged() {
       const { iframe } = this.$refs;
       if (iframe && iframe.contentWindow) {
-        this.iframeHostName = iframe.contentWindow.location.host || location.host;
+        if (this.src.indexOf('://') !== -1) {
+          this.iframeHostName = this.src.split('://')[1].split('/')[0];
+        } else {
+          this.iframeHostName = iframe.contentWindow.location.host || location.host;
+        }
       }
     }
   }
