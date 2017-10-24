@@ -40,12 +40,14 @@ module.exports = function({ nav: navConfig, src, dist }) {
       }
       const name = nav.path.replace('/', '');
       const docPath = fs.existsSync(path.resolve(src, `./${lang}/${name}.md`)) ? `./${lang}/${name}.md` : `./${lang}/${name}/index.md`;
-      docs.push(`'${lang}/${name}': wrapAsyncComponent(r => require.ensure([], () => r(require('${path.resolve(src, docPath).replace(/\\/g, '\\\\')}')), '${lang}/${name}.md'))`);
+      if (!nav.noDocument) {
+        docs.push(`'${lang}/${name}': wrapAsyncComponent(r => require.ensure([], () => r(require('${path.resolve(src, docPath).replace(/\\/g, '\\\\')}')), '${lang}/${name}.md'))`);
+      }
       if (!nav.noExample) {
         demos.push(`'${lang}/${name}': r => require.ensure([], () => r(require('./${lang}/${name}.vue')), '${lang}/${name}.vue')`);
       }
     }
-  })
+  });
 
   const entryDocs = path.resolve(dist, './entry-docs.js');
   const entryDemos = path.resolve(dist, './entry-demos.js');
