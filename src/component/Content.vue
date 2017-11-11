@@ -58,6 +58,11 @@ export default {
 
     > h3 {
       font-size: 20px;
+      margin-top: 45px;
+    }
+
+    > h2 + h3 {
+      margin-top: 25px;
     }
 
     > h4 {

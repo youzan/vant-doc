@@ -3,18 +3,19 @@
     <div class="zan-doc-header__top">
       <a class="zan-doc-header__logo" href="http://www.youzanyun.com/zanui"></a>
       <ul class="zan-doc-header__top-nav">
-        <li v-for="navItem in navData" class="zan-doc-header__top-nav-item">
+        <li v-for="(value, key) in nav" class="zan-doc-header__top-nav-item">
           <a
             class="zan-doc-header__top-nav-title"
-            :href="navItem.link"
-            :class="{ active: navItem.title === active, 'zan-doc-header__arrow': navItem.type === 'dropdown' }">
-            {{ navItem.title }}
+            :href="typeof value === 'string' ? value : 'javascript:;'"
+            :target="key === 'github' ? '_blank' : ''"
+            :class="{ active: key === active }"
+          >
+            <svg v-if="key === 'github'" height="28" width="28" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+              <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+            </svg>
+            <span v-else-if="key === 'lang'" class="zan-doc-header__top-nav-lang" @click="onSwitchLang(value)">{{ value.text }}</span>
+            <span v-else>{{ key }}</span>
           </a>
-          <zan-doc-dropdown
-            v-if="navItem.type === 'dropdown'"
-            :top="50"
-            :nav="navItem.nav"
-          ></zan-doc-dropdown>
         </li>
       </ul>
     </div>
@@ -30,25 +31,9 @@ export default {
     active: String
   },
 
-  computed: {
-    navData() {
-      return Object.keys(this.nav).map(key => {
-        const navItem = this.nav[key];
-        let type = 'link';
-        let link = navItem;
-
-        if (typeof navItem === 'object') {
-          link = 'javascript:;';
-          type = 'dropdown';
-        }
-
-        return {
-          link,
-          type,
-          nav: navItem,
-          title: key
-        };
-      });
+  methods: {
+    onSwitchLang(lang) {
+      this.$router.push(this.$route.path.replace(lang.from, lang.to));
     }
   }
 };
@@ -59,6 +44,7 @@ export default {
 
 .zan-doc-header {
   width: 100%;
+  user-select: none;
 
   &__top {
     display: flex;
@@ -76,34 +62,49 @@ export default {
       > li {
         display: inline-block;
         position: relative;
+        vertical-align: middle;
+      }
 
-        &:last-child {
-          > a {
-            margin-right: 5px;
-          }
+      &-lang {
+        padding: 0 7px;
+        font-size: 14px;
+        line-height: 24px;
+        display: block;
+        border-radius: 3px;
+        text-align: center;
+        color: $zan-doc-code-color;
+        border: 1px solid currentColor;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        transition: .3s ease-in-out;
+
+        &:hover {
+          color: $zan-doc-blue;
         }
       }
 
       &-item {
-        .zan-doc-dropdown {
-          display: none;
-        }
-
-        &:hover .zan-doc-dropdown {
-          display: block;
-        }
+        margin-left: 20px;
       }
 
       &-title {
-        margin: 0 20px;
         font-size: 15px;
-        display: block;
         letter-spacing: 1px;
         color: $zan-doc-text-color;
 
         &:hover,
         &.active {
           color: $zan-doc-blue;
+        }
+
+        svg {
+          fill: $zan-doc-code-color;
+          display: block;
+          vertical-align: middle;
+          transition: .3s ease-in-out;
+
+          &:hover {
+            fill: $zan-doc-blue;
+          }
         }
       }
 
