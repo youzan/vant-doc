@@ -30,5 +30,6 @@
     font-size: 13px;
     padding: 0 8px;
     font-family: inherit;
+    word-break: keep-all;
   }
 }
