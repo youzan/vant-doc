@@ -1,6 +1,6 @@
 <template>
-  <section :class="`demo-${name}`">
-    <h1 class="van-doc-demo-section__title">{{ title || name }}</h1>
+  <section :class="`demo-${demoName}`">
+    <h1 class="van-doc-demo-section__title">{{ title || demoName }}</h1>
     <slot></slot>
   </section>
 </template>
@@ -12,6 +12,21 @@ export default {
   props: {
     name: String,
     title: String
+  },
+
+  computed: {
+    demoName() {
+      return this.name || this.getParentName();
+    }
+  },
+
+  methods: {
+    getParentName() {
+      const { $parent } = this;
+      if ($parent && $parent.$options.name) {
+        return $parent.$options.name.replace('demo-', '');
+      }
+    }
   }
 };
 </script>

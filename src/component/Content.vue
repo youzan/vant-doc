@@ -119,10 +119,44 @@ export default {
 
     p > code,
     li > code,
-    .van-doc-table code {
+    table code {
       margin: 2px;
       padding: 2px 7px;
       display: inline;
+    }
+  }
+
+  table {
+    width: 100%;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 45px;
+    background-color: #fff;
+    border-collapse: collapse;
+    color: $van-doc-text-color;
+
+    th {
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: normal;
+      background-color: #f5f7fa;
+      border: 1px solid $van-doc-border-color;
+
+      &:first-child {
+        padding-left: 10px;
+      }
+    }
+
+    td {
+      padding: 8px;
+      border: 1px solid $van-doc-border-color;
+    }
+
+    code {
+      font-size: 13px;
+      padding: 0 8px;
+      font-family: inherit;
+      word-break: keep-all;
     }
   }
 
