@@ -1,2 +1,2 @@
-# ZanDoc
-有赞文档模板.
+# Vant Doc
+Vant 文档模板.

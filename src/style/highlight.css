@@ -12,7 +12,7 @@ code {
   word-break: break-all;
   white-space: pre-wrap;
   background-color: #f5f7fa;
-  color: $zan-doc-code-color;
+  color: $van-doc-code-color;
   padding: 18px 10px 18px 20px;
   font-family: "Source Code Pro", "Monaco", "Inconsolata", monospace;
 
@@ -59,7 +59,7 @@ code.language-css {
 }
 
 .hljs-subst {
-  color: $zan-doc-code-color;
+  color: $van-doc-code-color;
 }
 
 .hljs-string,

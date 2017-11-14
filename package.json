@@ -1,6 +1,6 @@
 {
-  "name": "zan-doc",
-  "version": "0.3.11",
+  "name": "vant-doc",
+  "version": "0.3.13",
   "description": "youzan document template",
   "main": "./dist/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chenjiahan/zan-doc.git"
+    "url": "git+https://github.com/chenjiahan/van-doc.git"
   },
   "keywords": [
     "doc",
@@ -21,9 +21,9 @@
   "author": "youzanfe",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chenjiahan/zan-doc/issues"
+    "url": "https://github.com/chenjiahan/van-doc/issues"
   },
-  "homepage": "https://github.com/chenjiahan/zan-doc#readme",
+  "homepage": "https://github.com/chenjiahan/van-doc#readme",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.26.0",

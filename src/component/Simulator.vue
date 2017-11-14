@@ -1,8 +1,8 @@
 <template>
-  <div :class="['zan-doc-simulator', { 'zan-doc-simulator-fixed': isFixed }]">
-    <div class="zan-doc-simulator__nav">
-      <div class="zan-doc-simulator__url">{{ iframeHostName }}</div>
-      <div class="zan-doc-simulator__reload" @click="reloadIframe"></div>
+  <div :class="['van-doc-simulator', { 'van-doc-simulator-fixed': isFixed }]">
+    <div class="van-doc-simulator__nav">
+      <div class="van-doc-simulator__url">{{ iframeHostName }}</div>
+      <div class="van-doc-simulator__reload" @click="reloadIframe"></div>
     </div>
     <iframe ref="iframe" :src="src" :style="simulatorStyle" frameborder="0" />
   </div>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'zan-doc-simulator',
+  name: 'van-doc-simulator',
 
   props: {
     src: String
@@ -86,22 +86,22 @@ export default {
 <style lang="postcss">
 @import '../style/variable';
 
-.zan-doc-simulator {
+.van-doc-simulator {
   z-index: 1;
   overflow: hidden;
   position: absolute;
   border-radius: 6px;
   background: #f2f2f4;
   box-sizing: border-box;
-  right: $zan-doc-padding;
-  width: $zan-doc-simulator-width;
-  min-width: $zan-doc-simulator-width;
-  top: calc($zan-doc-padding + $zan-doc-header-top-height);
+  right: $van-doc-padding;
+  width: $van-doc-simulator-width;
+  min-width: $van-doc-simulator-width;
+  top: calc($van-doc-padding + $van-doc-header-top-height);
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
 
   @media (max-width: 1300px) {
-    width: $zan-doc-simulator-small-width;
-    min-width: $zan-doc-simulator-small-width;
+    width: $van-doc-simulator-small-width;
+    min-width: $van-doc-simulator-small-width;
   }
 
   @media (max-width: 1100px) {
@@ -111,7 +111,7 @@ export default {
 
   &-fixed {
     position: fixed;
-    top: $zan-doc-padding;
+    top: $van-doc-padding;
   }
 
   iframe {

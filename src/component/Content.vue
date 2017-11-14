@@ -1,12 +1,12 @@
 <template>
-  <div :class="['zan-doc-content', `zan-doc-content--${currentPage}`]">
+  <div :class="['van-doc-content', `van-doc-content--${currentPage}`]">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'zan-doc-content',
+  name: 'van-doc-content',
 
   computed: {
     currentPage() {
@@ -23,17 +23,17 @@ export default {
 <style lang="postcss">
 @import '../style/variable';
 
-.zan-doc-content {
+.van-doc-content {
   flex: 1;
   position: relative;
   padding-bottom: 75px;
 
   a {
-    color: $zan-doc-blue;
+    color: $van-doc-blue;
   }
 
   section {
-    padding: 0 $zan-doc-padding;
+    padding: 0 $van-doc-padding;
     overflow: hidden;
 
     > h1,
@@ -75,14 +75,14 @@ export default {
 
     > h6 {
       font-size: 14px;
-      color: $zan-doc-dark-grey;
+      color: $van-doc-dark-grey;
     }
 
     > p {
       margin: 14px 0;
       font-size: 14px;
       line-height: 20px;
-      color: $zan-doc-dark-grey;
+      color: $van-doc-dark-grey;
     }
 
     > ul li,
@@ -104,7 +104,7 @@ export default {
         margin-top: -2px;
         border-radius: 50%;
         box-sizing: border-box;
-        border: 1px solid $zan-doc-dark-grey;
+        border: 1px solid $van-doc-dark-grey;
       }
 
       li {
@@ -119,7 +119,7 @@ export default {
 
     p > code,
     li > code,
-    .zan-doc-table code {
+    .van-doc-table code {
       margin: 2px;
       padding: 2px 7px;
       display: inline;

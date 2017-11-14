@@ -1,18 +1,18 @@
 <template>
-  <div class="zan-doc-nav">
+  <div class="van-doc-nav">
     <ul>
-      <li class="zan-doc-nav__item" v-for="(item, index) in navConfig" :key="index">
-        <zan-doc-nav-link :item="item" :base="base" />
+      <li class="van-doc-nav__item" v-for="(item, index) in navConfig" :key="index">
+        <van-doc-nav-link :item="item" :base="base" />
         <ul v-if="item.children">
           <li class="nav-item" v-for="(navItem, index) in item.children" :key="index">
-            <zan-doc-nav-link :item="navItem" :base="base" />
+            <van-doc-nav-link :item="navItem" :base="base" />
           </li>
         </ul>
         <div v-if="item.groups" v-for="(group, index) in item.groups" :key="index">
-          <div class="zan-doc-nav__group-title">{{ group.groupName }}</div>
+          <div class="van-doc-nav__group-title">{{ group.groupName }}</div>
           <ul>
-            <li :key="index" class="zan-doc-nav__subitem" v-for="(navItem, index) in group.list" v-if="!navItem.disabled">
-              <zan-doc-nav-link :item="navItem" :base="base" />              
+            <li :key="index" class="van-doc-nav__subitem" v-for="(navItem, index) in group.list" v-if="!navItem.disabled">
+              <van-doc-nav-link :item="navItem" :base="base" />              
             </li>
           </ul>
         </div>
@@ -25,7 +25,7 @@
 import NavLink from './NavLink.vue';
 
 export default {
-  name: 'zan-doc-nav',
+  name: 'van-doc-nav',
 
   components: {
     [NavLink.name]: NavLink
@@ -44,11 +44,11 @@ export default {
 <style lang="postcss">
 @import '../style/variable';
 
-.zan-doc-nav {
+.van-doc-nav {
   padding: 20px 0;
   min-width: 240px;
   max-width: 240px;
-  border-right: 1px solid $zan-doc-border-color;
+  border-right: 1px solid $van-doc-border-color;
 
   @media (max-width: 1300px) {
     min-width: 220px;
@@ -67,7 +67,7 @@ export default {
       transition: all .3s;
 
       &.active {
-        color: $zan-doc-blue;
+        color: $van-doc-blue;
         background-color: #f5f7fa;
       }
     }
@@ -79,7 +79,7 @@ export default {
       padding-left: 34px;
 
       &:hover {
-        color: $zan-doc-blue;
+        color: $van-doc-blue;
         background-color: #f5f7fa;
       }
     }
@@ -94,7 +94,7 @@ export default {
     font-size: 12px;
     line-height: 40px;
     padding-left: 22px;
-    color: $zan-doc-text-light-blue;
+    color: $van-doc-text-light-blue;
   }
 
   @media (max-width: 1300px) {

@@ -36,7 +36,7 @@ a {
   text-decoration: none;
 }
 
-.zan-doc {
+.van-doc {
   background-color: #ececec;
-  background-image: linear-gradient(180deg, #031a49, $zan-doc-blue);
+  background-image: linear-gradient(180deg, #031a49, $van-doc-blue);
 }

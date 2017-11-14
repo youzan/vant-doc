@@ -1,17 +1,12 @@
-'use strict';
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * 模拟移动端 touch 事件
  */
 
-var multiTouchStartPos;
 var eventTarget;
 
 // polyfills
 if (!document.createTouch) {
-  document.createTouch = function (view, target, identifier, pageX, pageY, screenX, screenY) {
+  document.createTouch = function(view, target, identifier, pageX, pageY, screenX, screenY) {
     // auto set
     return new Touch(target, identifier, {
       pageX: pageX,
@@ -25,7 +20,7 @@ if (!document.createTouch) {
 }
 
 if (!document.createTouchList) {
-  document.createTouchList = function () {
+  document.createTouchList = function() {
     var touchList = TouchList();
     for (var i = 0; i < arguments.length; i++) {
       touchList[i] = arguments[i];
@@ -47,8 +42,6 @@ if (!document.createTouchList) {
  */
 
 var Touch = function Touch(target, identifier, pos, deltaX, deltaY) {
-  _classCallCheck(this, Touch);
-
   deltaX = deltaX || 0;
   deltaY = deltaY || 0;
 
@@ -67,17 +60,15 @@ var Touch = function Touch(target, identifier, pos, deltaX, deltaY) {
  * @constructor
  * @returns touchList
  */
-
-
 function TouchList() {
   var touchList = [];
 
-  touchList['item'] = function (index) {
+  touchList['item'] = function(index) {
     return this[index] || null;
   };
 
   // specified by Mozilla
-  touchList['identifiedTouch'] = function (id) {
+  touchList['identifiedTouch'] = function(id) {
     return this[id + 1] || null;
   };
 
@@ -94,7 +85,7 @@ function fakeTouchSupport() {
 
   for (var o = 0; o < objs.length; o++) {
     for (var p = 0; p < props.length; p++) {
-      if (objs[o] && objs[o][props[p]] == undefined) {
+      if (objs[o] && objs[o][props[p]] === undefined) {
         objs[o][props[p]] = null;
       }
     }
@@ -107,7 +98,7 @@ function fakeTouchSupport() {
  * @returns {Function}
  */
 function onMouse(touchType) {
-  return function (ev) {
+  return function(ev) {
     // prevent mouse events
 
     if (ev.which !== 1) {
@@ -117,15 +108,14 @@ function onMouse(touchType) {
     // The EventTarget on which the touch point started when it was first placed on the surface,
     // even if the touch point has since moved outside the interactive area of that element.
     // also, when the target doesnt exist anymore, we update it
-    if (ev.type == 'mousedown' || !eventTarget || eventTarget && !eventTarget.dispatchEvent) {
+    if (ev.type === 'mousedown' || !eventTarget || eventTarget && !eventTarget.dispatchEvent) {
       eventTarget = ev.target;
     }
 
     triggerTouch(touchType, ev);
 
     // reset
-    if (ev.type == 'mouseup') {
-      multiTouchStartPos = null;
+    if (ev.type === 'mouseup') {
       eventTarget = null;
     }
   };
@@ -170,7 +160,7 @@ function createTouchList(mouseEv) {
  */
 function getActiveTouches(mouseEv) {
   // empty list
-  if (mouseEv.type == 'mouseup') {
+  if (mouseEv.type === 'mouseup') {
     return TouchList();
   }
   return createTouchList(mouseEv);
