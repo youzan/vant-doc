@@ -1,22 +1,31 @@
 <template>
-  <section :class="`demo-${demoName}`">
+  <section class="van-doc-demo-section" :class="`demo-${demoName}`" :style="style">
     <h1 class="van-doc-demo-section__title">{{ title || demoName }}</h1>
     <slot></slot>
   </section>
 </template>
 
 <script>
+const winHeight = window.innerHeight;
+
 export default {
   name: 'van-doc-demo-section',
 
   props: {
     name: String,
-    title: String
+    title: String,
+    background: String
   },
 
   computed: {
     demoName() {
       return this.name || this.getParentName();
+    },
+    style() {
+      return {
+        minHeight: winHeight + 'px',
+        background: this.background
+      };
     }
   },
 
@@ -35,6 +44,8 @@ export default {
 @import '../style/variable';
 
 .van-doc-demo-section {
+  padding-bottom: 20px;
+
   &__title {
     margin: 0;
     padding: 15px;
