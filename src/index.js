@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VanDoc from './VanDoc';
 import Nav from './component/Nav';
-import Demos from './component/Demos';
 import Block from './component/Block';
 import Header from './component/Header';
 import Footer from './component/Footer';
@@ -14,7 +13,6 @@ import DemoSection from './component/DemoSection';
 
 const components = [
   Nav,
-  Demos,
   Header,
   Footer,
   VanDoc,
@@ -35,7 +33,6 @@ export default function install() {
 
 export {
   Nav,
-  Demos,
   Header,
   Footer,
   VanDoc,
