@@ -6,7 +6,8 @@
 </template>
 
 <script>
-const winHeight = window.innerHeight;
+import Vue from 'vue';
+const winHeight = Vue.prototype.$isServer ? 500 : window.innerHeight;
 const camelizeRE = /-(\w)/g;
 
 export default {
@@ -49,6 +50,7 @@ export default {
 
 .van-doc-demo-section {
   padding-bottom: 20px;
+  box-sizing: border-box;
 
   &__title {
     margin: 0;
