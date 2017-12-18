@@ -1,6 +1,6 @@
 <template>
   <div class="van-doc">
-    <van-doc-header :nav="config.header" active="移动端" />
+    <van-doc-header :config="config.header" active="移动端" />
     <van-doc-container :hasSimulator="!!(simulator || simulators.length)">
       <van-doc-nav :navConfig="config.nav" :base="base" />
       <van-doc-content>

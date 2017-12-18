@@ -1,6 +1,6 @@
 {
   "name": "vant-doc",
-  "version": "0.3.18",
+  "version": "0.3.19",
   "description": "youzan document template",
   "main": "./dist/index.js",
   "scripts": {

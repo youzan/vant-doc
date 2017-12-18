@@ -1,9 +1,12 @@
 <template>
   <div class="van-doc-header">
     <div class="van-doc-header__top">
-      <a class="van-doc-header__logo" href="http://www.youzanyun.com/zanui"></a>
+      <a class="van-doc-header__logo" :href="config.logo.href">
+        <img :src="config.logo.image">
+        <span>{{ config.logo.title }}</span>
+      </a>
       <ul class="van-doc-header__top-nav">
-        <li v-for="(value, key) in nav" class="van-doc-header__top-nav-item">
+        <li v-for="(value, key) in config.nav" class="van-doc-header__top-nav-item">
           <a
             class="van-doc-header__top-nav-title"
             :href="typeof value === 'string' ? value : 'javascript:;'"
@@ -27,7 +30,7 @@ export default {
   name: 'van-doc-header',
 
   props: {
-    nav: Object,
+    config: Object,
     active: String
   },
 
@@ -131,13 +134,24 @@ export default {
 
   &__logo {
     display: block;
-    width: 76px;
-    height: 20px;
-    background-image: url(https://img.yzcdn.cn/upload_files/2017/04/20/FjwR1mraVIqtHWb8YWDW_YzQ_Kh2.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
 
+    img,
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    img {
+      width: 24px;
+      margin-right: 3px;
+    }
+
+    span {
+      color: #333;
+      font-size: 20px;
+      font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    }
+  }
 
   &__bottom {
     height: $van-doc-header-bottom-height;
