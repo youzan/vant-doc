@@ -111,13 +111,12 @@ export default {
   right: 0;
   bottom: 0;
   display: flex;
-  padding: 24px 40px;
+  padding: 24px 45px;
   position: absolute;
-  border-top: 1px solid $van-doc-border-color;
 
   &__link {
     flex: 1;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.5;
     cursor: pointer;
     opacity: .7;
@@ -141,7 +140,7 @@ export default {
 
   &__left,
   &__right {
-    padding: 0 20px;
+    padding: 0 15px;
     position: relative;
   }
 
@@ -154,6 +153,7 @@ export default {
     top: 50%;
     width: 8px;
     height: 8px;
+    margin-top: -4px;
     position: absolute;
     border: solid currentColor;
     border-width: 0 1px 1px 0;
@@ -161,12 +161,12 @@ export default {
 
   &__arrow-left {
     left: 0;
-    transform: rotate(135deg) translateY(50%);
+    transform: rotate(135deg);
   }
 
   &__arrow-right {
     right: 0;
-    transform: rotate(-45deg) translateY(-50%);
+    transform: rotate(-45deg);
   }
 }
 </style>

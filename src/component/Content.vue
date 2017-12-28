@@ -26,14 +26,14 @@ export default {
 .van-doc-content {
   flex: 1;
   position: relative;
-  padding-bottom: 75px;
+  padding: 0 0 75px;
 
   a {
     color: $van-doc-blue;
   }
 
   section {
-    padding: 0 $van-doc-padding;
+    padding: 10px $van-doc-padding;
     overflow: hidden;
 
     > h1,
@@ -54,6 +54,7 @@ export default {
 
     > h2 {
       font-size: 30px;
+      margin-bottom: 25px;
     }
 
     > h3 {
@@ -67,6 +68,7 @@ export default {
 
     > h4 {
       font-size: 16px;
+      margin-bottom: 15px;
     }
 
     > h5 {
@@ -79,7 +81,7 @@ export default {
     }
 
     > p {
-      margin: 14px 0;
+      margin: 15px 0;
       font-size: 14px;
       line-height: 20px;
       color: $van-doc-dark-grey;

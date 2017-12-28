@@ -28,7 +28,6 @@ export default {
 @import '../style/variable';
 
 .van-doc-footer {
-  margin-top: 40px;
   position: relative;
   background-color: #061A2A;
 

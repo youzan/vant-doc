@@ -6,7 +6,7 @@ code {
   overflow-x: auto;
   font-weight: 400;
   line-height: 22px;
-  border-radius: 6px;
+  border-radius: 3px;
   margin-bottom: 25px;
   position: relative;
   word-break: break-all;
@@ -81,7 +81,7 @@ code.language-css {
 .hljs-literal,
 .hljs-bullet,
 .hljs-link {
-  color: #31a354;
+  color: #1cbc9b;
 }
 
 .hljs-deletion,

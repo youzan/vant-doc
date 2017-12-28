@@ -103,7 +103,7 @@ export default {
   width: $van-doc-simulator-width;
   min-width: $van-doc-simulator-width;
   top: calc($van-doc-padding + $van-doc-header-top-height);
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
 
   @media (max-width: 1300px) {
     width: $van-doc-simulator-small-width;
@@ -113,6 +113,11 @@ export default {
   @media (max-width: 1100px) {
     left: 750px;
     right: auto;
+  }
+
+  @media (min-width: $van-doc-row-max-width) {
+    right: 50%;
+    margin-right: calc(-$van-doc-row-max-width/2 + 40px);
   }
 
   &-fixed {

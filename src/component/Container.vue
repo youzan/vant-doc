@@ -1,5 +1,5 @@
 <template>
-  <div :class="['van-doc-container', { 'van-doc-container--with-simulator': hasSimulator }]">
+  <div class="van-doc-container van-doc-row" :class="{ 'van-doc-container--with-simulator': hasSimulator }">
     <slot></slot>
   </div>
 </template>
@@ -18,18 +18,16 @@ export default {
 @import '../style/variable';
 
 .van-doc-container {
-  display: flex;
   overflow: hidden;
-  border-radius: 6px;
   box-sizing: border-box;
   background-color: #fff;
-  margin: $van-doc-padding $van-doc-padding 50px $van-doc-padding;
+  padding-left: 250px;
 
   &--with-simulator {
-    margin-right: calc($van-doc-simulator-width + $van-doc-padding * 2);
+    padding-right: calc($van-doc-simulator-width + $van-doc-padding);
 
     @media (max-width: 1300px) {
-      margin-right: calc($van-doc-simulator-small-width + $van-doc-padding * 2);      
+      padding-right: calc($van-doc-simulator-small-width + $van-doc-padding);
     }
   }
 }

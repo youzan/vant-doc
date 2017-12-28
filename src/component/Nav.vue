@@ -1,5 +1,5 @@
 <template>
-  <div class="van-doc-nav">
+  <div class="van-doc-nav" :style="style">
     <ul>
       <li class="van-doc-nav__item" v-for="(item, index) in navConfig" :key="index">
         <van-doc-nav-link :item="item" :base="base" />
@@ -37,6 +37,34 @@ export default {
       type: String,
       default: ''
     }
+  },
+
+  data() {
+    return {
+      top: 60,
+      bottom: 0
+    };
+  },
+
+  computed: {
+    style() {
+      return {
+        top: this.top + 'px',
+        bottom: this.bottom + 'px'
+      };
+    }
+  },
+
+  created() {
+    window.addEventListener('scroll', this.onScroll);
+    this.onScroll();
+  },
+
+  methods: {
+    onScroll() {
+      const { pageYOffset: offset } = window;
+      this.top = Math.max(0, 60 - offset);
+    }
   }
 };
 </script>
@@ -45,14 +73,24 @@ export default {
 @import '../style/variable';
 
 .van-doc-nav {
-  padding: 20px 0;
-  min-width: 240px;
-  max-width: 240px;
-  border-right: 1px solid $van-doc-border-color;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  z-index: 1;
+  min-width: 250px;
+  max-width: 250px;
+  position: fixed;
+  overflow-y: scroll;
+  padding: 25px 0 75px;
 
   @media (max-width: 1300px) {
     min-width: 220px;
     max-width: 220px;
+  }
+
+  @media (min-width: $van-doc-row-max-width) {
+    left: 50%;
+    margin-left: calc(-$van-doc-row-max-width/2);
   }
 
   &__item,
@@ -62,7 +100,7 @@ export default {
       display: block;
       color: #455a64;
       font-size: 16px;
-      padding: 8px 20px;
+      padding: 10px calc($van-doc-padding/2) 10px $van-doc-padding;
       line-height: 24px;
       transition: all .3s;
 
@@ -73,10 +111,15 @@ export default {
     }
   }
 
+  &__item {
+    > a {
+      font-weight: bold;
+    }
+  }
+
   &__subitem {
     a {
       font-size: 14px;
-      padding-left: 34px;
 
       &:hover {
         color: $van-doc-blue;
@@ -93,7 +136,7 @@ export default {
   &__group-title {
     font-size: 12px;
     line-height: 40px;
-    padding-left: 22px;
+    padding-left: $van-doc-padding;
     color: $van-doc-text-light-blue;
   }
 
@@ -111,7 +154,6 @@ export default {
     &__subitem {
       a {
         font-size: 13px;
-        padding-left: 30px;
       }
     }
   }
