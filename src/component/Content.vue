@@ -87,6 +87,12 @@ export default {
       color: $van-doc-dark-grey;
     }
 
+    > ul,
+    > ol {
+      padding: 15px 0;
+      background-color: #f5f7fa;
+    }
+
     > ul li,
     > ol li {
       color: #666;
