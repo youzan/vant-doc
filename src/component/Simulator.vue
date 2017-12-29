@@ -61,7 +61,7 @@ export default {
     },
 
     simulatorStyle() {
-      const height = Math.min(556, this.windowHeight - 222);
+      const height = Math.min(556, this.windowHeight - 150);
       return {
         height: height + 'px'
       };

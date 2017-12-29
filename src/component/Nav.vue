@@ -93,6 +93,21 @@ export default {
     margin-left: calc(-$van-doc-row-max-width/2);
   }
 
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(69, 90, 100, .2)
+  }
+
   &__item,
   &__subitem {
     a {
