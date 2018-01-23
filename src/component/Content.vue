@@ -105,11 +105,11 @@ export default {
       &::before {
         content: '';
         position: absolute;
-        top: 50%;
+        top: 0;
         left: 0;
         width: 6px;
         height: 6px;
-        margin-top: -2px;
+        margin-top: 8px;
         border-radius: 50%;
         box-sizing: border-box;
         border: 1px solid $van-doc-dark-grey;
