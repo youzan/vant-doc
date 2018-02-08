@@ -1,14 +1,11 @@
 <template>
   <section class="van-doc-demo-section" :class="`demo-${demoName}`" :style="style">
-    <h1 class="van-doc-demo-section__title">{{ title || camelize(demoName) }}</h1>
     <slot></slot>
   </section>
 </template>
 
 <script>
 import Vue from 'vue';
-const winHeight = Vue.prototype.$isServer ? 500 : window.innerHeight;
-const camelizeRE = /-(\w)/g;
 
 export default {
   name: 'van-doc-demo-section',
@@ -25,7 +22,6 @@ export default {
     },
     style() {
       return {
-        minHeight: winHeight + 'px',
         background: this.background
       };
     }
@@ -37,9 +33,6 @@ export default {
       if ($parent && $parent.$options.name) {
         return $parent.$options.name.replace('demo-', '');
       }
-    },
-    camelize(str) {
-      return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '');
     }
   }
 };
@@ -49,6 +42,7 @@ export default {
 @import '../style/variable';
 
 .van-doc-demo-section {
+  height: 100vh;
   padding-bottom: 20px;
   box-sizing: border-box;
 

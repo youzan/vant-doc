@@ -1,8 +1,8 @@
 <template>
-  <div class="van-doc-demo-block">
+  <section class="van-doc-demo-block">
     <h2 class="van-doc-demo-block__title">{{ title }}</h2>
     <slot></slot>
-  </div>  
+  </section>  
 </template>
 
 <script>
@@ -24,7 +24,13 @@ export default {
     font-weight: normal;
     font-size: 14px;
     color: $van-doc-text-light-blue;
-    padding: 40px 15px 10px;
+    padding: 40px 15px 15px;
+  }
+
+  &:first-of-type {
+    .van-doc-demo-block__title {
+      padding-top: 20px;
+    }
   }
 }
 </style>
