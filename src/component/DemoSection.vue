@@ -42,7 +42,7 @@ export default {
 @import '../style/variable';
 
 .van-doc-demo-section {
-  height: 100vh;
+  min-height: 100vh;
   padding-bottom: 20px;
   box-sizing: border-box;
 
