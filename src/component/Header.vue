@@ -149,8 +149,8 @@ export default {
     }
 
     span {
-      color: #333;
-      font-size: 20px;
+      font-size: 22px;
+      color: $van-doc-text-color;
       font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
     }
   }

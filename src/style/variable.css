@@ -1,5 +1,5 @@
 $van-doc-blue: #3498db;
-$van-doc-text-color: #333;
+$van-doc-text-color: #34495e;
 $van-doc-text-light-blue: rgba(69, 90, 100, .6);
 $van-doc-grey: #999;
 $van-doc-dark-grey: #666;
@@ -8,6 +8,8 @@ $van-doc-border-color: #eaeefb;;
 $van-doc-code-color: #455a64;
 $van-doc-padding: 40px;
 $van-doc-row-max-width: 1440px;
+
+$van-doc-nav-width: 240px;
 
 /* header */
 $van-doc-header-top-height: 60px;

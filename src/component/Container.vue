@@ -21,7 +21,7 @@ export default {
   overflow: hidden;
   box-sizing: border-box;
   background-color: #fff;
-  padding-left: 250px;
+  padding-left: $van-doc-nav-width;
 
   &--with-simulator {
     padding-right: calc($van-doc-simulator-width + $van-doc-padding);

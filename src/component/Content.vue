@@ -58,7 +58,7 @@ export default {
     }
 
     > h3 {
-      font-size: 20px;
+      font-size: 22px;
       margin-top: 45px;
     }
 
@@ -83,8 +83,8 @@ export default {
     > p {
       margin: 15px 0;
       font-size: 14px;
-      line-height: 20px;
-      color: $van-doc-dark-grey;
+      line-height: 26px;
+      color: $van-doc-text-color;
     }
 
     > ul,
@@ -95,9 +95,9 @@ export default {
 
     > ul li,
     > ol li {
-      color: #666;
+      color: $van-doc-text-color;
       font-size: 14px;
-      line-height: 20px;
+      line-height: 22px;
       margin: 5px 0 5px 20px;
       padding-left: 15px;
       position: relative;
@@ -132,6 +132,16 @@ export default {
       padding: 2px 7px;
       display: inline;
     }
+  }
+
+  blockquote {
+    padding: 16px;
+    margin: 20px 0;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: #ecf9ff;
+    color: rgba(52, 73, 94, .8);
+    border-left: 5px solid #50bfff;
   }
 
   table {

@@ -77,11 +77,11 @@ export default {
   top: 60px;
   bottom: 0;
   z-index: 1;
-  min-width: 250px;
-  max-width: 250px;
   position: fixed;
   overflow-y: scroll;
   padding: 25px 0 75px;
+  min-width: $van-doc-nav-width;
+  max-width: $van-doc-nav-width;
 
   @media (max-width: 1300px) {
     min-width: 220px;
