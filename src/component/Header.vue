@@ -5,6 +5,7 @@
         <a class="van-doc-header__logo" :href="config.logo.href">
           <img :src="config.logo.image">
           <span>{{ config.logo.title }}</span>
+          <span v-if="config.logo.version" class="van-doc-header__version">v{{ config.logo.version }}</span>
         </a>
         <ul class="van-doc-header__top-nav">
           <li v-for="(value, key) in config.nav" class="van-doc-header__top-nav-item">
@@ -79,8 +80,8 @@ export default {
         text-align: center;
         color: $van-doc-code-color;
         border: 1px solid currentColor;
-        font-family: "Helvetica Neue", Arial, sans-serif;
-        transition: .3s ease-in-out;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        transition: 0.3s ease-in-out;
 
         &:hover {
           color: $van-doc-blue;
@@ -105,7 +106,7 @@ export default {
           fill: $van-doc-code-color;
           display: block;
           vertical-align: middle;
-          transition: .3s ease-in-out;
+          transition: 0.3s ease-in-out;
 
           &:hover {
             fill: $van-doc-blue;
@@ -151,7 +152,16 @@ export default {
     span {
       font-size: 22px;
       color: $van-doc-text-color;
-      font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial,
+        sans-serif;
+    }
+
+    .van-doc-header__version {
+      font-size: 90%;
+      padding-top: 7px;
+      opacity: 0.7;
+      margin-left: 3px;
+      line-height: 1;
     }
   }
 
@@ -168,13 +178,13 @@ export default {
 
       a {
         color: #fff;
-        opacity: .8;
+        opacity: 0.8;
         display: block;
         padding: 0 20px;
         font-size: 14px;
 
         &.active {
-          background-color: rgba(255, 255, 255, .1);
+          background-color: rgba(255, 255, 255, 0.1);
         }
 
         &:hover,
