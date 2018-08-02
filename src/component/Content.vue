@@ -1,6 +1,6 @@
 <template>
   <div :class="['van-doc-content', `van-doc-content--${currentPage}`]">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
       return this.$route.name;
     }
   }
-}
+};
 </script>
 
 <style lang="postcss">

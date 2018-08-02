@@ -1,6 +1,6 @@
 <template>
   <div class="van-doc-container van-doc-row" :class="{ 'van-doc-container--with-simulator': hasSimulator }">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

@@ -2,7 +2,7 @@
   <div :class="['van-doc-simulator', { 'van-doc-simulator-fixed': isFixed }]">
     <div class="van-doc-simulator__nav">
       <div class="van-doc-simulator__url">{{ iframeHostName }}</div>
-      <div class="van-doc-simulator__reload" @click="reloadIframe"></div>
+      <div class="van-doc-simulator__reload" @click="reloadIframe" />
     </div>
     <iframe ref="iframe" :src="srcWithTimestamp" :style="simulatorStyle" frameborder="0" />
   </div>

@@ -12,7 +12,7 @@
           <div class="van-doc-nav__group-title">{{ group.groupName }}</div>
           <ul>
             <li :key="index" class="van-doc-nav__subitem" v-for="(navItem, index) in group.list" v-if="!navItem.disabled">
-              <van-doc-nav-link :item="navItem" :base="base" />              
+              <van-doc-nav-link :item="navItem" :base="base" />
             </li>
           </ul>
         </div>

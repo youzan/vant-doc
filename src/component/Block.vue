@@ -1,6 +1,6 @@
 <template>
   <div class="van-doc-block">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

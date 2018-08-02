@@ -4,7 +4,7 @@
       v-if="leftNav"
       class="van-doc-footer-nav__link van-doc-footer-nav__left"
       @click="handleNavClick('prev')">
-      <div class="van-doc-footer-nav__arrow-left"></div>
+      <div class="van-doc-footer-nav__arrow-left" />
       <span>{{ leftNav.title }}</span>
     </div>
     <div
@@ -12,7 +12,7 @@
       class="van-doc-footer-nav__link van-doc-footer-nav__right"
       @click="handleNavClick('next')">
       <span>{{ rightNav.title }}</span>
-      <div class="van-doc-footer-nav__arrow-right"></div>
+      <div class="van-doc-footer-nav__arrow-right" />
     </div>
   </div>
 </template>

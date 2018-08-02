@@ -4,4 +4,4 @@ module.exports = {
     'precss': {},
     'postcss-cssnext': {}
   }
-}
+};

@@ -1,8 +1,8 @@
 <template>
   <section class="van-doc-demo-block">
     <h2 class="van-doc-demo-block__title">{{ title }}</h2>
-    <slot></slot>
-  </section>  
+    <slot />
+  </section>
 </template>
 
 <script>

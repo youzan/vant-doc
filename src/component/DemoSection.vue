@@ -1,12 +1,10 @@
 <template>
   <section class="van-doc-demo-section" :class="`demo-${demoName}`" :style="style">
-    <slot></slot>
+    <slot />
   </section>
 </template>
 
 <script>
-import Vue from 'vue';
-
 export default {
   name: 'van-doc-demo-section',
 
