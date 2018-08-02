@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chenjiahan/van-doc.git"
+    "url": "git+https://github.com/youzan/vant-doc.git"
   },
   "keywords": [
     "doc",
@@ -21,9 +21,9 @@
   "author": "vant",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chenjiahan/van-doc/issues"
+    "url": "https://github.com/youzan/vant-doc/issues"
   },
-  "homepage": "https://github.com/chenjiahan/van-doc#readme",
+  "homepage": "https://github.com/youzan/vant-doc#readme",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.26.0",
