@@ -11,8 +11,8 @@ export default {
 
   computed: {
     itemName() {
-      const name = (this.item.title || this.item.name).split(' - ');
-      return `${name[0]} <span>${name.slice(1).join(' - ')}</span>`;
+      const name = (this.item.title || this.item.name).split(' ');
+      return `${name[0]} <span>${name.slice(1).join(' ')}</span>`;
     }
   }
 };
