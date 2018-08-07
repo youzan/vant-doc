@@ -1,30 +1,27 @@
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                use: ['babel-loader'],
-            },
-            {
-                test: /\.vue$/,
-                use: ['vue-loader']
-            },
-            {
-                test: /\.(css|pcss)$/,
-                use: ['css-loader', 'postcss-loader']
-            },
-        ]
-    },
-    resolve: {
-        extensions: ['.js', '.vue', '.css'],
-        alias: {
-            vue$: 'vue/dist/vue.esm.js'
-        }
-    },
-    performance: {
-        hints: false
-    },
-    resolve: {
-        extensions: ['.webpack.js',  '.js', '.vue', '.ts']
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: ['babel-loader']
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
+      },
+      {
+        test: /\.(css|pcss)$/,
+        use: ['css-loader', 'postcss-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.css'],
+    alias: {
+      vue$: 'vue/dist/vue.esm.js'
     }
+  },
+  performance: {
+    hints: false
+  }
 };
