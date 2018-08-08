@@ -10,6 +10,8 @@ import FooterNav from './component/FooterNav';
 import Simulator from './component/Simulator';
 import DemoBlock from './component/DemoBlock';
 import DemoSection from './component/DemoSection';
+import progress from 'nprogress';
+import './style/nprogress.css';
 
 const components = [
   Nav,
@@ -42,5 +44,6 @@ export {
   FooterNav,
   Simulator,
   DemoBlock,
-  DemoSection
+  DemoSection,
+  progress
 };
