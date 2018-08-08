@@ -1,6 +1,6 @@
 {
   "name": "vant-doc",
-  "version": "1.0.9-beta",
+  "version": "1.0.9",
   "description": "vant document template",
   "main": "./dist/index.js",
   "scripts": {

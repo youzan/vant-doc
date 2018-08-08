@@ -1,7 +1,7 @@
 const path = require('path');
 const shelljs = require('shelljs');
 
-function changelog() {
+function changelog(tag = 'v1.0.0') {
   const basepath = process.cwd();
   const dist = process.argv.pop();
 
@@ -16,7 +16,7 @@ function changelog() {
       --pr-label "**Improvements**" \
       --no-unreleased \
       --max-issues 200 \
-      --since-tag v1.0.0 \
+      --since-tag ${tag} \
       -o ${path.join(basepath, dist)}
     `
   );
