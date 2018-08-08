@@ -1,6 +1,6 @@
 {
   "name": "vant-doc",
-  "version": "1.0.8",
+  "version": "1.0.9-beta",
   "description": "vant document template",
   "main": "./dist/index.js",
   "scripts": {
@@ -12,6 +12,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/youzan/vant-doc.git"
+  },
+  "bin": {
+    "vant-doc": "./cli/index.js"
   },
   "keywords": [
     "doc",
@@ -47,6 +50,7 @@
   },
   "dependencies": {
     "cheerio": "0.22.0",
+    "commander": "^2.17.1",
     "decamelize": "^1.2.0",
     "fs-extra": "^4.0.2",
     "nprogress": "^0.2.0"
