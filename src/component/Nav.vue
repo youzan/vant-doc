@@ -1,23 +1,21 @@
 <template>
   <div class="van-doc-nav" :style="style">
-    <ul>
-      <li class="van-doc-nav__item" v-for="(item, index) in navConfig" :key="index">
-        <van-doc-nav-link :item="item" :base="base" />
-        <ul v-if="item.children">
-          <li class="nav-item" v-for="(navItem, index) in item.children" :key="index">
-            <van-doc-nav-link :item="navItem" :base="base" />
-          </li>
-        </ul>
-        <div v-if="item.groups" v-for="(group, index) in item.groups" :key="index">
-          <div class="van-doc-nav__group-title">{{ group.groupName }}</div>
-          <ul>
-            <li :key="index" class="van-doc-nav__subitem" v-for="(navItem, index) in group.list" v-if="!navItem.disabled">
-              <van-doc-nav-link :item="navItem" :base="base" />
-            </li>
-          </ul>
+    <div class="van-doc-nav__item" v-for="(item, index) in navConfig" :key="index">
+      <van-doc-nav-link :item="item" :base="base" />
+      <div v-if="item.children">
+        <div class="nav-item" v-for="(navItem, index) in item.children" :key="index">
+          <van-doc-nav-link :item="navItem" :base="base" />
         </div>
-      </li>
-    </ul>
+      </div>
+      <div v-if="item.groups" v-for="(group, index) in item.groups" :key="index">
+        <div class="van-doc-nav__group-title">{{ group.groupName }}</div>
+        <div>
+          <div :key="index" class="van-doc-nav__subitem" v-for="(navItem, index) in group.list" v-if="!navItem.disabled">
+            <van-doc-nav-link :item="navItem" :base="base" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -82,6 +80,7 @@ export default {
   padding: 25px 0 75px;
   min-width: $van-doc-nav-width;
   max-width: $van-doc-nav-width;
+  border-right: 1px solid #eaeefb;
 
   @media (max-width: 1300px) {
     min-width: 220px;
@@ -121,7 +120,6 @@ export default {
 
       &.active {
         color: $van-doc-blue;
-        background-color: #f5f7fa;
       }
     }
   }
@@ -138,7 +136,6 @@ export default {
 
       &:hover {
         color: $van-doc-blue;
-        background-color: #f5f7fa;
       }
     }
 
