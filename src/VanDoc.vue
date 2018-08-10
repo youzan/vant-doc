@@ -31,11 +31,11 @@ export default {
     simulator: String,
     simulators: {
       type: Array,
-      default: () => {}
+      default: () => []
     },
     base: {
       type: String,
-      default: '/component'
+      default: ''
     }
   }
 };

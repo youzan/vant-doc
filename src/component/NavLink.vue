@@ -1,13 +1,17 @@
 <template>
   <router-link v-if="item.path" active-class="active" :to="base + item.path" v-html="itemName" />
-  <a v-else-if="item.link" :href="item.link" v-html="itemName"></a>
-  <a v-else v-html="itemName"></a>
+  <a v-else-if="item.link" :href="item.link" v-html="itemName" />
+  <a v-else v-html="itemName "/>
 </template>
 
 <script>
 export default {
   name: 'van-doc-nav-link',
-  props: ['base', 'item'],
+
+  props: {
+    base: String,
+    item: Object
+  },
 
   computed: {
     itemName() {
