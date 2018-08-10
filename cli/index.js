@@ -6,8 +6,8 @@ const commander = require('commander');
 const changelog = require('./changelog');
 
 commander
-  .command('changelog')
-  .option('--tag', 'Since tag')
+  .command('changelog <dir>')
+  .option('--tag [tag]', 'Since tag')
   .action(changelog);
 
 commander.parse(process.argv);

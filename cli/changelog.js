@@ -1,9 +1,9 @@
 const path = require('path');
 const shelljs = require('shelljs');
 
-function changelog(tag = 'v1.0.0') {
+function changelog(dist, cmd) {
   const basepath = process.cwd();
-  const dist = process.argv.pop();
+  const tag = cmd.tag || 'v1.0.0';
 
   shelljs.exec(`
     basepath=${basepath}
