@@ -1,6 +1,6 @@
 <template>
   <div class="van-doc">
-    <van-doc-header :config="config.header" active="移动端" />
+    <van-doc-header :config="config.header" :active="active" />
     <van-doc-nav :nav-config="config.nav" :base="base" />
     <van-doc-container :has-simulator="!!(simulator || simulators.length)">
       <van-doc-content>
@@ -23,6 +23,7 @@ export default {
   name: 'van-doc',
 
   props: {
+    active: String,
     config: {
       type: Object,
       required: true

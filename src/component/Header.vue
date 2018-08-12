@@ -8,12 +8,19 @@
           <span v-if="config.logo.version" class="van-doc-header__version">v{{ config.logo.version }}</span>
         </a>
         <ul class="van-doc-header__top-nav">
-          <li v-for="(value, key) in config.nav" class="van-doc-header__top-nav-item">
+          <li
+            v-for="(value, key) in config.nav"
+            class="van-doc-header__top-nav-item"
+            :class="{ active: key === active }"
+          >
             <a
               class="van-doc-header__top-nav-title"
               :href="typeof value === 'string' ? value : 'javascript:;'"
               :target="key === 'github' ? '_blank' : ''"
-              :class="{ active: key === active }"
+              :class="{
+                active: key === active,
+                link: typeof value === 'string' && key !== 'github'
+              }"
             >
               <svg
                 v-if="key === 'github'"
@@ -97,18 +104,12 @@ export default {
       }
 
       &-item {
-        margin-left: 20px;
+        margin: 0 15px;
       }
 
       &-title {
+        display: block;
         font-size: 15px;
-        letter-spacing: 1px;
-        color: $van-doc-text-color;
-
-        &:hover,
-        &.active {
-          color: $van-doc-blue;
-        }
 
         svg {
           fill: $van-doc-code-color;
@@ -118,6 +119,18 @@ export default {
 
           &:hover {
             fill: $van-doc-blue;
+          }
+        }
+
+        &.link {
+          color: $van-doc-text-color;
+          border-bottom: 1px solid transparent;
+          transition: 0.3s ease-in-out;
+
+          &:hover,
+          &.active {
+            color: $van-doc-blue;
+            border-bottom-color: #19b5fe;
           }
         }
       }
