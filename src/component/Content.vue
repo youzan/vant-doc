@@ -45,7 +45,7 @@ export default {
       line-height: 1.5;
       font-weight: normal;
       margin: 20px 0 10px;
-      color: rgba(51, 51, 51, .9);
+      color: $van-doc-black;
     }
 
     > h1 {
