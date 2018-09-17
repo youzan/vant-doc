@@ -80,7 +80,7 @@ export default {
   padding: 25px 0 75px;
   min-width: $van-doc-nav-width;
   max-width: $van-doc-nav-width;
-  border-right: 1px solid #eaeefb;
+  border-right: 1px solid $van-doc-border-color;
 
   @media (max-width: 1300px) {
     min-width: 220px;

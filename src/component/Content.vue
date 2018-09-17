@@ -90,7 +90,7 @@ export default {
     > ul,
     > ol {
       padding: 15px 0;
-      background-color: #f5f7fa;
+      background-color: $van-doc-code-background-color;
     }
 
     > ul li,
@@ -157,8 +157,7 @@ export default {
       padding: 8px 10px;
       text-align: left;
       font-weight: normal;
-      background-color: #f5f7fa;
-      border: 1px solid $van-doc-border-color;
+      background-color: $van-doc-code-background-color;
 
       &:first-child {
         padding-left: 10px;
@@ -167,7 +166,7 @@ export default {
 
     td {
       padding: 8px;
-      border: 1px solid $van-doc-border-color;
+      border-bottom: 1px solid $van-doc-code-background-color;
     }
 
     code {

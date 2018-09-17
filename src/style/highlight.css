@@ -11,9 +11,9 @@ code {
   position: relative;
   word-break: break-all;
   white-space: pre-wrap;
-  background-color: #f5f7fa;
   color: $van-doc-code-color;
   padding: 18px 10px 18px 20px;
+  background-color: $van-doc-code-background-color;
   font-family: "Source Code Pro", "Monaco", "Inconsolata", monospace;
 
   &::after {
