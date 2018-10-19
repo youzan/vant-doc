@@ -181,7 +181,7 @@ export default {
     section {
       padding-bottom: 30px;
 
-      > h3 {
+      > h2 {
         + p {
           margin: 0;
 
@@ -196,8 +196,15 @@ export default {
           -webkit-font-smoothing: auto;
         }
 
-        &:not(:first-of-type) {
-          margin-top: 50px;
+        margin-top: 50px;
+
+        &:nth-child(1),
+        &:nth-child(2) {
+          margin-top: 20px;
+        }
+
+        &:nth-child(2) {
+          margin-bottom: 10px;
         }
       }
     }
