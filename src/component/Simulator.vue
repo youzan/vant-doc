@@ -4,7 +4,7 @@
       <div class="van-doc-simulator__url">{{ iframeHostName }}</div>
       <div class="van-doc-simulator__reload" @click="reloadIframe" />
     </div>
-    <iframe ref="iframe" :src="srcWithTimestamp" :style="simulatorStyle" frameborder="0" />
+    <iframe ref="iframe" :src="src" :style="simulatorStyle" frameborder="0" />
   </div>
 </template>
 
@@ -51,11 +51,6 @@ export default {
   },
 
   computed: {
-    srcWithTimestamp() {
-      const now = `rand=${Date.now()}`;
-      return this.src + (this.src.indexOf('?') === -1 ? '?' : '&') + now;
-    },
-
     isFixed() {
       return this.scrollTop > 60;
     },
