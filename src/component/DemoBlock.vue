@@ -24,7 +24,7 @@ export default {
     font-weight: normal;
     font-size: 14px;
     color: $van-doc-text-light-blue;
-    padding: 40px 15px 15px;
+    padding: 35px 15px 15px;
   }
 
   &:first-of-type {
