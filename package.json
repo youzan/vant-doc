@@ -1,5 +1,5 @@
 {
-  "name": "vant-doc",
+  "name": "@vant/doc",
   "version": "1.0.20",
   "description": "vant document template",
   "main": "./dist/index.js",
@@ -7,7 +7,7 @@
     "test": "npm test",
     "dev": "node_modules/.bin/webpack-dev-server --config ./build/webpack.dev.conf.js",
     "build": "webpack --hide-modules --progress --config ./build/webpack.prod.conf.js",
-    "release": "npm run build && npm publish"
+    "release": "npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
