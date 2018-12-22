@@ -178,6 +178,11 @@ export default {
   }
 
   &--changelog {
+    strong {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
     section {
       padding-bottom: 30px;
 
