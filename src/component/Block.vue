@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'van-doc-block'
-}
+};
 </script>
 
 <style lang="postcss">

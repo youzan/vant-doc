@@ -5,7 +5,6 @@
     <van-doc-container :has-simulator="!!(simulator || simulators.length)">
       <van-doc-content>
         <slot />
-        <van-doc-footer-nav :nav-config="config.nav" :base="base" />
       </van-doc-content>
     </van-doc-container>
     <van-doc-simulator v-if="simulator" :src="simulator" />
