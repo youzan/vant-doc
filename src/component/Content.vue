@@ -87,18 +87,12 @@ export default {
       color: $van-doc-text-color;
     }
 
-    > ul,
-    > ol {
-      padding: 15px 0;
-      background-color: $van-doc-code-background-color;
-    }
-
     > ul li,
     > ol li {
       color: $van-doc-text-color;
       font-size: 14px;
       line-height: 22px;
-      margin: 5px 0 5px 20px;
+      margin: 5px 0 5px 10px;
       padding-left: 15px;
       position: relative;
 
