@@ -33,7 +33,7 @@ export default {
   }
 
   section {
-    padding: 10px $van-doc-padding;
+    padding: 13px $van-doc-padding;
     overflow: hidden;
 
     > h1,
