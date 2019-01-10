@@ -196,14 +196,11 @@ export default {
         }
 
         margin-top: 50px;
+        margin-bottom: 10px;
 
         &:nth-child(1),
         &:nth-child(2) {
           margin-top: 20px;
-        }
-
-        &:nth-child(2) {
-          margin-bottom: 10px;
         }
       }
     }
