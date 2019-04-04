@@ -57,7 +57,7 @@ export default {
   width: $van-doc-simulator-width;
   min-width: $van-doc-simulator-width;
   top: calc($van-doc-padding + $van-doc-header-top-height);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px, rgba(0, 0, 0, 0.2) 0px 1px 2px;
+  box-shadow: #ebedf0 0 4px 12px;
 
   @media (max-width: 1300px) {
     width: $van-doc-simulator-small-width;
