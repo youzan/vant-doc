@@ -140,7 +140,6 @@ export default {
     }
 
     span {
-      opacity: .6;
       font-size: 13px;
     }
   }
