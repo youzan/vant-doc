@@ -20,7 +20,6 @@ export default {
 .van-doc-container {
   overflow: hidden;
   box-sizing: border-box;
-  background-color: #fff;
   padding-left: $van-doc-nav-width;
 
   &--with-simulator {

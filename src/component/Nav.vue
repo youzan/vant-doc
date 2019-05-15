@@ -78,14 +78,11 @@ export default {
   position: fixed;
   overflow-y: scroll;
   padding: 25px 0 75px;
+  background-color: #fff;
   min-width: $van-doc-nav-width;
   max-width: $van-doc-nav-width;
+  box-shadow: 0 8px 12px #ebedf0;
   border-right: 1px solid $van-doc-border-color;
-
-  @media (max-width: 1300px) {
-    min-width: 220px;
-    max-width: 220px;
-  }
 
   @media (min-width: $van-doc-row-max-width) {
     left: 50%;
@@ -114,7 +111,7 @@ export default {
       display: block;
       color: #455a64;
       font-size: 16px;
-      padding: 10px calc($van-doc-padding/2) 10px $van-doc-padding;
+      padding: 10px 10px 10px $van-doc-padding;
       line-height: 24px;
       transition: all .3s;
 

@@ -66,12 +66,12 @@ export default {
 .van-doc-header {
   width: 100%;
   user-select: none;
-  border-bottom: 1px solid $van-doc-border-color;
+  box-shadow: 0 4px 12px #ebedf0;
 
   &__top {
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: #002140;
     padding: 0 $van-doc-padding;
     height: $van-doc-header-top-height;
     line-height: $van-doc-header-top-height;
@@ -93,14 +93,10 @@ export default {
         display: block;
         border-radius: 3px;
         text-align: center;
-        color: $van-doc-code-color;
+        color: #fff;
         border: 1px solid currentColor;
         font-family: 'Helvetica Neue', Arial, sans-serif;
         transition: 0.3s ease-in-out;
-
-        &:hover {
-          color: $van-doc-blue;
-        }
       }
 
       &-item {
@@ -112,7 +108,7 @@ export default {
         font-size: 15px;
 
         svg {
-          fill: $van-doc-code-color;
+          fill: #fff;
           display: block;
           vertical-align: middle;
           transition: 0.3s ease-in-out;
@@ -123,35 +119,15 @@ export default {
         }
 
         &.link {
-          color: $van-doc-text-color;
+          color: rgba(255, 255, 255, 0.65);
           border-bottom: 1px solid transparent;
           transition: 0.3s ease-in-out;
 
           &:hover,
           &.active {
-            color: $van-doc-blue;
-            border-bottom-color: #19b5fe;
+            color: #fff;
           }
         }
-      }
-
-      .van-doc-header__arrow:hover {
-        color: $van-doc-text-color;
-      }
-
-      .van-doc-header__arrow::after {
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        margin-top: -1px;
-        margin-left: 1px;
-        margin-right: -4px;
-        width: 0;
-        height: 0;
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-top: 5px solid #ccc;
-        pointer-events: none;
       }
     }
   }
@@ -166,14 +142,13 @@ export default {
     }
 
     img {
-      width: 24px;
+      width: 26px;
       margin-right: 5px;
     }
 
     span {
+      color: #fff;
       font-size: 22px;
-      color: $van-doc-black;
-      font-family: 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
     }
 
     .van-doc-header__version {
@@ -182,36 +157,6 @@ export default {
       opacity: 0.7;
       margin-left: 3px;
       line-height: 1;
-    }
-  }
-
-  &__bottom {
-    height: $van-doc-header-bottom-height;
-    line-height: $van-doc-header-bottom-height;
-
-    &-nav {
-      text-align: center;
-
-      li {
-        display: inline-block;
-      }
-
-      a {
-        color: #fff;
-        opacity: 0.8;
-        display: block;
-        padding: 0 20px;
-        font-size: 14px;
-
-        &.active {
-          background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        &:hover,
-        &.active {
-          opacity: 1;
-        }
-      }
     }
   }
 }
