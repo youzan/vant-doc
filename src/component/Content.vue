@@ -64,13 +64,13 @@ export default {
   h3 {
     font-size: 17px;
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   h4,
   h5 {
     font-size: 14px;
-    margin: 10px 0;
+    margin: 12px 0;
   }
 
   p {
@@ -81,7 +81,7 @@ export default {
 
   table {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 13px;
     line-height: 1.5;
     border-radius: 6px;
@@ -168,7 +168,7 @@ export default {
 
   blockquote {
     padding: 16px;
-    margin: 20px 0;
+    margin: 20px 0 0;
     font-size: 14px;
     border-radius: 4px;
     background-color: #ecf9ff;
@@ -177,13 +177,13 @@ export default {
   }
 
   img {
-    margin: 10px 0;
+    margin: 12px 0;
   }
 
   &--changelog {
     strong {
       display: block;
-      margin: 10px 0;
+      margin: 12px 0;
       font-size: 15px;
       font-weight: 500;
     }

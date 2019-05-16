@@ -2,7 +2,7 @@
 
 code {
   position: relative;
-  margin-top: 10px;
+  margin-top: 12px;
   display: block;
   font-size: 13px;
   font-weight: 400;
@@ -16,10 +16,6 @@ code {
 
 pre {
   margin: 0;
-
-  + pre {
-    margin-top: 10px;
-  }
 }
 
 .hljs {

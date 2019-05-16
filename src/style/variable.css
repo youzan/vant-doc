@@ -9,7 +9,7 @@ $van-doc-border-color: #f1f4f8;
 $van-doc-code-color: #455a64;
 $van-doc-code-background-color: #f1f4f8;
 $van-doc-padding: 30px;
-$van-doc-row-max-width: 1440px;
+$van-doc-row-max-width: 1680px;
 
 $van-doc-nav-width: 220px;
 
@@ -22,4 +22,3 @@ $van-doc-simulator-width: 360px;
 $van-doc-simulator-small-width: 320px;
 $van-doc-simulator-height: 620px;
 $van-doc-simulator-small-height: 560px;
-

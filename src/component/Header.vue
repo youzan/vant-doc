@@ -7,6 +7,7 @@
           <span>{{ config.logo.title }}</span>
           <span v-if="config.logo.version" class="van-doc-header__version">v{{ config.logo.version }}</span>
         </a>
+
         <ul class="van-doc-header__top-nav">
           <li
             v-for="(value, key) in config.nav"
@@ -71,7 +72,7 @@ export default {
   &__top {
     display: flex;
     align-items: center;
-    background-color: #002140;
+    background-color: #001938;
     padding: 0 $van-doc-padding;
     height: $van-doc-header-top-height;
     line-height: $van-doc-header-top-height;
@@ -112,10 +113,6 @@ export default {
           display: block;
           vertical-align: middle;
           transition: 0.3s ease-in-out;
-
-          &:hover {
-            fill: $van-doc-blue;
-          }
         }
 
         &.link {
