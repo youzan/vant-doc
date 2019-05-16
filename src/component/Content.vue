@@ -162,7 +162,7 @@ export default {
   }
 
   section {
-    padding: 30px 40px;
+    padding: 30px;
     overflow: hidden;
   }
 
