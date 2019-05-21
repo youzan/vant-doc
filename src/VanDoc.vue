@@ -2,9 +2,11 @@
   <div class="van-doc">
     <van-doc-header
       :lang="lang"
-      :active="active"
+      :github="github"
+      :versions="versions"
       :config="config.header"
       :search-config="searchConfig"
+      @switch-version="$emit('switch-version', $event)"
     />
     <van-doc-nav :nav-config="config.nav" :base="base" />
     <van-doc-container :has-simulator="!!(simulator || simulators.length)">
@@ -28,7 +30,8 @@ export default {
 
   props: {
     lang: String,
-    active: String,
+    github: String,
+    versions: Array,
     searchConfig: Object,
     currentSimulator: Number,
     simulator: String,

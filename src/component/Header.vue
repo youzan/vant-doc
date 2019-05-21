@@ -7,48 +7,45 @@
           <span>{{ config.logo.title }}</span>
         </a>
 
-        <div v-if="searchConfig" class="van-doc-header__search">
-          <input class="van-doc-header__input" :placeholder="searchPlaceholder">
-        </div>
+        <search-input
+          v-if="searchConfig"
+          :lang="lang"
+          :search-config="searchConfig"
+        />
 
         <ul class="van-doc-header__top-nav">
-          <li
-            v-for="(value, key) in config.nav"
-            class="van-doc-header__top-nav-item"
-            :class="{ active: key === active }"
-          >
-            <a
-              class="van-doc-header__top-nav-title"
-              :href="typeof value === 'string' ? value : 'javascript:;'"
-              :target="key === 'github' ? '_blank' : ''"
-              :class="{
-                active: key === active,
-                link: typeof value === 'string' && key !== 'github'
-              }"
+          <li ref="version" v-if="versions" class="van-doc-header__top-nav-item">
+            <span
+              class="van-doc-header__cube van-doc-header__version"
+              @click="toggleVersionPop"
             >
-              <svg
-                v-if="key === 'github'"
-                height="28"
-                width="28"
-                class="octicon octicon-mark-github"
-                viewBox="0 0 16 16"
-                version="1.1"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-                />
-              </svg>
-              <span
-                v-else-if="key === 'lang'"
-                class="van-doc-header__top-nav-lang"
-                @click="onSwitchLang(value)"
-              >
-                {{ value.text }}
-              </span>
-              <span v-else>{{ key }}</span>
-            </a>
+              {{ versions[0] }}
+
+              <transition name="van-doc-dropdown">
+                <div v-if="showVersionPop" class="van-doc-header__version-pop">
+                  <div
+                    v-for="item in versions"
+                    class="van-doc-header__version-pop-item"
+                    @click="onSwitchVersion(item)"
+                  >
+                    {{ item }}
+                  </div>
+                </div>
+              </transition>
+            </span>
+          </li>
+
+          <li v-if="config.nav.lang" class="van-doc-header__top-nav-item">
+            <span
+              class="van-doc-header__cube"
+              @click="onSwitchLang(config.nav.lang)"
+            >
+              {{ config.nav.lang.text }}
+            </span>
+          </li>
+
+          <li v-if="github" class="van-doc-header__top-nav-item">
+            <github-icon :link="github" />
           </li>
         </ul>
       </div>
@@ -57,48 +54,53 @@
 </template>
 
 <script>
-import docsearch from 'docsearch.js';
-import 'docsearch.js/dist/cdn/docsearch.css';
+import GithubIcon from './GithubIcon';
+import SearchInput from './SearchInput';
 
 export default {
   name: 'van-doc-header',
 
+  components: {
+    GithubIcon,
+    SearchInput
+  },
+
   props: {
     lang: String,
     config: Object,
-    active: String,
+    github: String,
+    versions: Array,
     searchConfig: Object
   },
 
-  computed: {
-    searchPlaceholder() {
-      return this.lang === 'zh-CN' ? '搜索文档...' : 'Search...';
-    }
-  },
-
-  watch: {
-    lang(lang) {
-      if (this.docsearchInstance) {
-        this.docsearchInstance.algoliaOptions.facetFilters = [`lang:${lang}`];
-      }
-    }
-  },
-
-  mounted() {
-    if (this.searchConfig) {
-      this.docsearchInstance = docsearch({
-        ...this.searchConfig,
-        inputSelector: '.van-doc-header__input',
-        algoliaOptions: {
-          facetFilters: [`lang:${this.lang}`]
-        }
-      });
-    }
+  data() {
+    return {
+      showVersionPop: false
+    };
   },
 
   methods: {
+    toggleVersionPop() {
+      const val = !this.showVersionPop;
+
+      const action = val ? 'add' : 'remove';
+      document.body[`${action}EventListener`]('click', this.checkHideVersionPop);
+
+      this.showVersionPop = val;
+    },
+
+    checkHideVersionPop(event) {
+      if (!this.$refs.version.contains(event.target)) {
+        this.showVersionPop = false;
+      }
+    },
+
     onSwitchLang(lang) {
       this.$router.push(this.$route.path.replace(lang.from, lang.to));
+    },
+
+    onSwitchVersion(version) {
+      this.$emit('switch-version', version);
     }
   }
 };
@@ -130,43 +132,69 @@ export default {
         vertical-align: middle;
       }
 
-      &-lang {
-        padding: 0 7px;
-        font-size: 14px;
-        line-height: 24px;
-        display: block;
-        border-radius: 3px;
-        text-align: center;
-        color: #fff;
-        border: 1px solid currentColor;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        transition: 0.3s ease-in-out;
-      }
-
       &-item {
-        margin: 0 15px;
+        margin-left: 25px;
       }
 
       &-title {
         display: block;
         font-size: 15px;
+      }
+    }
+  }
 
-        svg {
-          fill: #fff;
-          display: block;
-          vertical-align: middle;
-          transition: 0.3s ease-in-out;
-        }
+  &__cube {
+    position: relative;
+    cursor: pointer;
+    padding: 0 7px;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    border-radius: 3px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .7);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    transition: 0.3s ease-in-out;
+  }
 
-        &.link {
-          color: rgba(255, 255, 255, 0.65);
-          border-bottom: 1px solid transparent;
-          transition: 0.3s ease-in-out;
+  &__version {
+    padding-right: 20px;
 
-          &:hover,
-          &.active {
-            color: #fff;
-          }
+    &::after {
+      position: absolute;
+      content: '';
+      top: 7px;
+      right: 7px;
+      width: 5px;
+      height: 5px;
+      border: 1px solid;
+      color: rgba(255, 255, 255, .9);
+      border-color: transparent transparent currentColor currentColor;
+      transform: rotate(-45deg);
+    }
+
+    &-pop {
+      position: absolute;
+      z-index: 99;
+      left: 0;
+      top: 30px;
+      width: 68px;
+      color: #333;
+      transition: .2s cubic-bezier(0.215, 0.61, 0.355, 1);
+      text-align: left;
+      line-height: 36px;
+      border-radius: 3px;
+      transform-origin: top;
+      background-color: #fff;
+      box-shadow: 0 4px 12px #ebedf0;
+
+      &-item {
+        padding-left: 7px;
+        transition: .2s;
+
+        &:hover {
+          color: $van-doc-blue;
         }
       }
     }
@@ -191,24 +219,13 @@ export default {
       font-size: 22px;
     }
   }
+}
 
-  &__input {
-    height: 60px;
-    width: 200px;
-    border: none;
-    color: #fff;
-    font-size: 14px;
-    margin-left: 135px;
-    background-color: transparent;
-
-    &:focus {
-      outline: none;
-    }
-
-    &::placeholder {
-      opacity: 0.7;
-      color: #fff;
-    }
+.van-doc-dropdown {
+  &-enter,
+  &-leave-active {
+    opacity: 0;
+    transform: scaleY(0);
   }
 }
 </style>

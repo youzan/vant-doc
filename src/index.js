@@ -3,7 +3,6 @@ import VanDoc from './VanDoc';
 import Nav from './component/Nav';
 import Block from './component/Block';
 import Header from './component/Header';
-import Footer from './component/Footer';
 import Content from './component/Content';
 import Container from './component/Container';
 import Simulator from './component/Simulator';
@@ -15,7 +14,6 @@ import './style/nprogress.css';
 const components = [
   Nav,
   Header,
-  Footer,
   VanDoc,
   Block,
   Content,
@@ -34,7 +32,6 @@ export default function install() {
 export {
   Nav,
   Header,
-  Footer,
   VanDoc,
   Block,
   Content,
