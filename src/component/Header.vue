@@ -178,8 +178,8 @@ export default {
       position: absolute;
       z-index: 99;
       left: 0;
+      right: 0;
       top: 30px;
-      width: 68px;
       color: #333;
       transition: .2s cubic-bezier(0.215, 0.61, 0.355, 1);
       text-align: left;
