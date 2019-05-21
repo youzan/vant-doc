@@ -1,6 +1,11 @@
 <template>
   <div class="van-doc">
-    <van-doc-header :config="config.header" :active="active" />
+    <van-doc-header
+      :lang="lang"
+      :active="active"
+      :config="config.header"
+      :search-config="searchConfig"
+    />
     <van-doc-nav :nav-config="config.nav" :base="base" />
     <van-doc-container :has-simulator="!!(simulator || simulators.length)">
       <van-doc-content>
@@ -22,13 +27,15 @@ export default {
   name: 'van-doc',
 
   props: {
+    lang: String,
     active: String,
+    searchConfig: Object,
+    currentSimulator: Number,
+    simulator: String,
     config: {
       type: Object,
       required: true
     },
-    currentSimulator: Number,
-    simulator: String,
     simulators: {
       type: Array,
       default: () => []
