@@ -67,10 +67,16 @@ export default {
     margin-bottom: 12px;
   }
 
-  h4,
+  h4 {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 24px 0 12px;
+  }
+
   h5 {
     font-size: 14px;
-    margin: 12px 0;
+    font-weight: 500;
+    margin: 24px 0 12px;
   }
 
   p {
