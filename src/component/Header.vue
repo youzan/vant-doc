@@ -36,12 +36,12 @@
           </li>
 
           <li v-if="config.nav.lang" class="van-doc-header__top-nav-item">
-            <span
+            <a
               class="van-doc-header__cube"
-              @click="onSwitchLang(config.nav.lang)"
+              :href="langLink"
             >
               {{ config.nav.lang.text }}
-            </span>
+            </a>
           </li>
 
           <li v-if="github" class="van-doc-header__top-nav-item">
@@ -77,6 +77,13 @@ export default {
     return {
       showVersionPop: false
     };
+  },
+
+  computed: {
+    langLink() {
+      const { lang } = this.config.nav;
+      return `#${this.$route.path.replace(lang.from, lang.to)}`;
+    }
   },
 
   methods: {
