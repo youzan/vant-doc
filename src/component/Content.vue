@@ -154,6 +154,7 @@ export default {
 
   hr {
     border: 0 none;
+    margin: 30px 0;
     border-top: 1px solid #eee;
   }
 
