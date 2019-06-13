@@ -184,7 +184,9 @@ export default {
   }
 
   img {
-    margin: 12px 0;
+    width: 100%;
+    margin: 15px 0;
+    box-shadow: 0 2px 4px #ebedf0;
   }
 
   &--changelog {
