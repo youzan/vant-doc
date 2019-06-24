@@ -2,12 +2,12 @@
 
 code {
   position: relative;
-  margin-top: 12px;
+  margin-top: 20px;
   display: block;
   font-size: 13px;
   font-weight: 400;
   overflow-x: auto;
-  line-height: 22px;
+  line-height: 24px;
   word-break: break-all;
   white-space: pre-wrap;
   color: $van-doc-code-color;

@@ -29,8 +29,8 @@ export default {
   padding: 0 0 75px;
 
   .card {
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
     border-radius: 6px;
     background-color: #fff;
     box-shadow: 0 8px 12px #ebedf0;
