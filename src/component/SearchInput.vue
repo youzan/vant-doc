@@ -3,9 +3,6 @@
 </template>
 
 <script>
-import docsearch from 'docsearch.js';
-import 'docsearch.js/dist/cdn/docsearch.css';
-
 export default {
   name: 'van-doc-search',
 
@@ -30,7 +27,7 @@ export default {
 
   mounted() {
     if (this.searchConfig) {
-      this.docsearchInstance = docsearch({
+      this.docsearchInstance = window.docsearch({
         ...this.searchConfig,
         inputSelector: '.van-doc-search',
         algoliaOptions: {
