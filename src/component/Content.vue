@@ -49,23 +49,13 @@ export default {
     line-height: 1.5;
     font-weight: normal;
     color: $van-doc-black;
-
-    .header-anchor {
-      opacity: 0;
-      color: inherit;
-      transition: .3s ease;
-    }
-
-    &:hover {
-      .header-anchor {
-        opacity: 1;
-      }
-    }
+    cursor: pointer;
   }
 
   h1 {
     margin: 0 0 30px;
     font-size: 30px;
+    cursor: default;
   }
 
   h2 {
