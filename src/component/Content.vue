@@ -49,7 +49,10 @@ export default {
     line-height: 1.5;
     font-weight: normal;
     color: $van-doc-black;
-    cursor: pointer;
+
+    &[id] {
+      cursor: pointer;
+    }
   }
 
   h1 {
