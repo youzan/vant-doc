@@ -14,6 +14,12 @@
         />
 
         <ul class="van-doc-header__top-nav">
+          <li v-for="item in config.nav.logoLink" class="van-doc-header__top-nav-item">
+            <a class="van-doc-header__logo-link" target="_blank" :href="item.url">
+              <img :src="item.image" >
+            </a>
+          </li>
+
           <li ref="version" v-if="versions" class="van-doc-header__top-nav-item">
             <span
               class="van-doc-header__cube van-doc-header__version"
@@ -43,10 +49,6 @@
               {{ config.nav.lang.text }}
             </a>
           </li>
-
-          <li v-if="github" class="van-doc-header__top-nav-item">
-            <github-icon :link="github" />
-          </li>
         </ul>
       </div>
     </div>
@@ -54,14 +56,12 @@
 </template>
 
 <script>
-import GithubIcon from './GithubIcon';
 import SearchInput from './SearchInput';
 
 export default {
   name: 'van-doc-header',
 
   components: {
-    GithubIcon,
     SearchInput
   },
 
@@ -131,6 +131,7 @@ export default {
 
     &-nav {
       flex: 1;
+      font-size: 0;
       text-align: right;
 
       > li {
@@ -140,7 +141,7 @@ export default {
       }
 
       &-item {
-        margin-left: 25px;
+        margin-left: 20px;
       }
 
       &-title {
@@ -153,11 +154,11 @@ export default {
   &__cube {
     position: relative;
     cursor: pointer;
-    padding: 0 7px;
+    padding: 0 10px;
     font-size: 14px;
     line-height: 24px;
     display: block;
-    border-radius: 3px;
+    border-radius: 20px;
     text-align: center;
     color: #fff;
     border: 1px solid rgba(255, 255, 255, .7);
@@ -224,6 +225,19 @@ export default {
     span {
       color: #fff;
       font-size: 22px;
+    }
+  }
+
+  &__logo-link {
+    img {
+      width: 26px;
+      height: 26px;
+      display: block;
+      transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
 }
